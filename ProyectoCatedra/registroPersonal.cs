@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using static ProyectoCatedra.Agregar;
 
 namespace ProyectoCatedra
 {
@@ -24,8 +25,8 @@ namespace ProyectoCatedra
 
         private void btnAgregarPersonal_Click(object sender, EventArgs e)
         {
-            Agregar newPersonal = new Agregar();
-            newPersonal.Show();
+            var form = new Agregar(ModoAgregar.Personal);
+            form.ShowDialog();
         }
 
         private void btnBack_Click(object sender, EventArgs e)

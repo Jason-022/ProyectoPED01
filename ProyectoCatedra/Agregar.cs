@@ -12,9 +12,70 @@ namespace ProyectoCatedra
 {
     public partial class Agregar : Form
     {
-        public Agregar()
+        private readonly ModoAgregar _modo;
+
+        public Agregar(ModoAgregar modo)
         {
             InitializeComponent();
+            _modo = modo;
+            ConfigurarFormulario();
+        }
+
+        public enum ModoAgregar
+        {
+            Cita,
+            Personal,
+            TipoCorte
+        }
+
+        private void ConfigurarFormulario()
+        {
+            // Oculta todos los paneles
+            panelCita.Visible = false;
+            panelPersonal.Visible = false;
+
+            // Activa sólo el panel para el modo actual
+            switch (_modo)
+            {
+                case ModoAgregar.Cita:
+                    this.Text = "Agregar Cita";
+                    panelCita.Visible = true;
+                    panelCita.BringToFront();
+                    btnAceptar.Text = "Guardar Cita";
+                    break;
+
+                case ModoAgregar.Personal:
+                    this.Text = "Registrar Personal";
+                    panelPersonal.Visible = true;
+                    panelPersonal.BringToFront();
+                    btnAceptar.Text = "Agregar Personal";
+                    break;
+
+                /*case ModoAgregar.TipoCorte:
+                    this.Text = "Nuevo Tipo de Corte";
+                    panelTipoCorte.Visible = true;
+                    btnAceptar.Text = "Guardar Tipo";
+                    break;*/
+            }
+
+            btnAceptar.Visible = true;
+        }
+
+
+
+        private void Agregar_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }
