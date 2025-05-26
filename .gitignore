@@ -1,0 +1,18 @@
+# Archivos de Visual Studio
+.vs/
+*.suo
+*.user
+*.userosscache
+*.sln.docstates
+
+# Carpetas de build
+bin/
+obj/
+
+# Archivos temporales
+*.log
+*.cache
+
+# Archivos de configuración local
+*.dbmdl
+*.vscode/

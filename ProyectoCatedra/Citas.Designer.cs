@@ -122,6 +122,7 @@
             this.btnAgregarCita.Size = new System.Drawing.Size(33, 34);
             this.btnAgregarCita.TabIndex = 28;
             this.btnAgregarCita.UseVisualStyleBackColor = true;
+            this.btnAgregarCita.Click += new System.EventHandler(this.btnAgregarCita_Click);
             // 
             // Citas
             // 

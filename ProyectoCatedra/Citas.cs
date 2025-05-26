@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using static ProyectoCatedra.Agregar;
 
 namespace ProyectoCatedra
 {
@@ -22,6 +23,12 @@ namespace ProyectoCatedra
             Inicio rI = new Inicio();
             rI.Show();
             this.Hide();
+        }
+
+        private void btnAgregarCita_Click(object sender, EventArgs e)
+        {
+            var form = new Agregar(ModoAgregar.Cita);
+            form.ShowDialog();
         }
     }
 }
