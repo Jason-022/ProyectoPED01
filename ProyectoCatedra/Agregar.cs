@@ -16,6 +16,7 @@ namespace ProyectoCatedra
 
         public Agregar(ModoAgregar modo)
         {
+           
             InitializeComponent();
             _modo = modo;
             ConfigurarFormulario();
@@ -24,8 +25,7 @@ namespace ProyectoCatedra
         public enum ModoAgregar
         {
             Cita,
-            Personal,
-            TipoCorte
+            Personal
         }
 
         private void ConfigurarFormulario()
@@ -51,17 +51,18 @@ namespace ProyectoCatedra
                     btnAceptar.Text = "Agregar Personal";
                     break;
 
-                /*case ModoAgregar.TipoCorte:
-                    this.Text = "Nuevo Tipo de Corte";
-                    panelTipoCorte.Visible = true;
-                    btnAceptar.Text = "Guardar Tipo";
-                    break;*/
+                
             }
 
             btnAceptar.Visible = true;
         }
 
 
+
+        private void ClearFields()
+        {
+            
+        }
 
         private void Agregar_Load(object sender, EventArgs e)
         {
@@ -77,5 +78,18 @@ namespace ProyectoCatedra
         {
 
         }
+
+        private void btnAceptar_Click(object sender, EventArgs e)
+        {
+           
+        }
+
+        private void btnCerrar_Click(object sender, EventArgs e)
+        {
+            DialogResult = DialogResult.Cancel;
+            Close();
+        }
     }
 }
+
+

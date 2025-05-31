@@ -28,25 +28,26 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.dataGridViewTipoCorte = new System.Windows.Forms.DataGridView();
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.btnEliminarPeinado = new System.Windows.Forms.Button();
             this.btnModificarPeinado = new System.Windows.Forms.Button();
             this.btnBuscarPeinado = new System.Windows.Forms.Button();
             this.btnBack = new System.Windows.Forms.Button();
-            this.btnAgregarCita = new System.Windows.Forms.Button();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            this.btnAgregarCorte = new System.Windows.Forms.Button();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewTipoCorte)).BeginInit();
             this.SuspendLayout();
             // 
-            // dataGridView1
+            // dataGridViewTipoCorte
             // 
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(13, 239);
-            this.dataGridView1.Margin = new System.Windows.Forms.Padding(4);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.RowHeadersWidth = 51;
-            this.dataGridView1.Size = new System.Drawing.Size(999, 374);
-            this.dataGridView1.TabIndex = 34;
+            this.dataGridViewTipoCorte.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridViewTipoCorte.Location = new System.Drawing.Point(13, 239);
+            this.dataGridViewTipoCorte.Margin = new System.Windows.Forms.Padding(4);
+            this.dataGridViewTipoCorte.Name = "dataGridViewTipoCorte";
+            this.dataGridViewTipoCorte.RowHeadersWidth = 51;
+            this.dataGridViewTipoCorte.Size = new System.Drawing.Size(999, 374);
+            this.dataGridViewTipoCorte.TabIndex = 34;
+            this.dataGridViewTipoCorte.SelectionChanged += new System.EventHandler(this.dataGridViewTipoCorte_SelectionChanged);
             // 
             // textBox1
             // 
@@ -69,6 +70,7 @@
             this.btnEliminarPeinado.TabIndex = 32;
             this.btnEliminarPeinado.Text = "Eliminar";
             this.btnEliminarPeinado.UseVisualStyleBackColor = false;
+            this.btnEliminarPeinado.Click += new System.EventHandler(this.btnEliminarPeinado_Click);
             // 
             // btnModificarPeinado
             // 
@@ -83,6 +85,7 @@
             this.btnModificarPeinado.TabIndex = 31;
             this.btnModificarPeinado.Text = "Modificar";
             this.btnModificarPeinado.UseVisualStyleBackColor = false;
+            this.btnModificarPeinado.Click += new System.EventHandler(this.btnModificarPeinado_Click);
             // 
             // btnBuscarPeinado
             // 
@@ -111,17 +114,18 @@
             this.btnBack.UseVisualStyleBackColor = true;
             this.btnBack.Click += new System.EventHandler(this.btnBack_Click);
             // 
-            // btnAgregarCita
+            // btnAgregarCorte
             // 
-            this.btnAgregarCita.FlatAppearance.BorderSize = 0;
-            this.btnAgregarCita.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnAgregarCita.Image = global::ProyectoCatedra.Properties.Resources.boton_circular_plus;
-            this.btnAgregarCita.Location = new System.Drawing.Point(13, 177);
-            this.btnAgregarCita.Margin = new System.Windows.Forms.Padding(4);
-            this.btnAgregarCita.Name = "btnAgregarCita";
-            this.btnAgregarCita.Size = new System.Drawing.Size(52, 54);
-            this.btnAgregarCita.TabIndex = 35;
-            this.btnAgregarCita.UseVisualStyleBackColor = true;
+            this.btnAgregarCorte.FlatAppearance.BorderSize = 0;
+            this.btnAgregarCorte.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnAgregarCorte.Image = global::ProyectoCatedra.Properties.Resources.boton_circular_plus;
+            this.btnAgregarCorte.Location = new System.Drawing.Point(13, 177);
+            this.btnAgregarCorte.Margin = new System.Windows.Forms.Padding(4);
+            this.btnAgregarCorte.Name = "btnAgregarCorte";
+            this.btnAgregarCorte.Size = new System.Drawing.Size(52, 54);
+            this.btnAgregarCorte.TabIndex = 35;
+            this.btnAgregarCorte.UseVisualStyleBackColor = true;
+            this.btnAgregarCorte.Click += new System.EventHandler(this.btnAgregarCorte_Click);
             // 
             // TiposDeCortes
             // 
@@ -130,15 +134,15 @@
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(28)))), ((int)(((byte)(37)))), ((int)(((byte)(38)))));
             this.ClientSize = new System.Drawing.Size(1039, 635);
             this.Controls.Add(this.btnBack);
-            this.Controls.Add(this.btnAgregarCita);
-            this.Controls.Add(this.dataGridView1);
+            this.Controls.Add(this.btnAgregarCorte);
+            this.Controls.Add(this.dataGridViewTipoCorte);
             this.Controls.Add(this.textBox1);
             this.Controls.Add(this.btnEliminarPeinado);
             this.Controls.Add(this.btnModificarPeinado);
             this.Controls.Add(this.btnBuscarPeinado);
             this.Name = "TiposDeCortes";
             this.Text = "TiposDeCortes";
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewTipoCorte)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -147,8 +151,8 @@
         #endregion
 
         private System.Windows.Forms.Button btnBack;
-        private System.Windows.Forms.Button btnAgregarCita;
-        private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.Button btnAgregarCorte;
+        private System.Windows.Forms.DataGridView dataGridViewTipoCorte;
         private System.Windows.Forms.TextBox textBox1;
         private System.Windows.Forms.Button btnEliminarPeinado;
         private System.Windows.Forms.Button btnModificarPeinado;
