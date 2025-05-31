@@ -13,7 +13,6 @@ namespace ProyectoCatedra
     public partial class Agregar : Form
     {
         private readonly ModoAgregar _modo;
-        private TipoCorteDAL tipoCorteDAL = new TipoCorteDAL();
 
         public Agregar(ModoAgregar modo)
         {
