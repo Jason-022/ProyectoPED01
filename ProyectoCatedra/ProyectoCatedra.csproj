@@ -67,6 +67,12 @@
       <DependentUpon>Citas.cs</DependentUpon>
     </Compile>
     <Compile Include="ConnectionHelper.cs" />
+    <Compile Include="CRUPersonal.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CRUPersonal.Designer.cs">
+      <DependentUpon>CRUPersonal.cs</DependentUpon>
+    </Compile>
     <Compile Include="EstadoReservacionesDAL.cs" />
     <Compile Include="HistorialCortesDAL.cs" />
     <Compile Include="Inicio.cs">
@@ -117,6 +123,8 @@
     <Compile Include="TiposDeCortes.Designer.cs">
       <DependentUpon>TiposDeCortes.cs</DependentUpon>
     </Compile>
+  </ItemGroup>
+  <ItemGroup>
     <EmbeddedResource Include="Administracion.resx">
       <DependentUpon>Administracion.cs</DependentUpon>
     </EmbeddedResource>
@@ -125,6 +133,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Citas.resx">
       <DependentUpon>Citas.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CRUPersonal.resx">
+      <DependentUpon>CRUPersonal.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Inicio.resx">
       <DependentUpon>Inicio.cs</DependentUpon>
@@ -157,6 +168,8 @@
     <EmbeddedResource Include="TiposDeCortes.resx">
       <DependentUpon>TiposDeCortes.cs</DependentUpon>
     </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
