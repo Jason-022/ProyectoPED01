@@ -28,25 +28,25 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.dataGridViewSinCitas = new System.Windows.Forms.DataGridView();
             this.btnEliminarCita = new System.Windows.Forms.Button();
             this.btnModificarCita = new System.Windows.Forms.Button();
             this.btnBack = new System.Windows.Forms.Button();
             this.btnAgregarCita = new System.Windows.Forms.Button();
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.btnBuscarCita = new System.Windows.Forms.Button();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewSinCitas)).BeginInit();
             this.SuspendLayout();
             // 
-            // dataGridView1
+            // dataGridViewSinCitas
             // 
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(27, 161);
-            this.dataGridView1.Margin = new System.Windows.Forms.Padding(4);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.RowHeadersWidth = 51;
-            this.dataGridView1.Size = new System.Drawing.Size(999, 374);
-            this.dataGridView1.TabIndex = 34;
+            this.dataGridViewSinCitas.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridViewSinCitas.Location = new System.Drawing.Point(27, 161);
+            this.dataGridViewSinCitas.Margin = new System.Windows.Forms.Padding(4);
+            this.dataGridViewSinCitas.Name = "dataGridViewSinCitas";
+            this.dataGridViewSinCitas.RowHeadersWidth = 51;
+            this.dataGridViewSinCitas.Size = new System.Drawing.Size(999, 374);
+            this.dataGridViewSinCitas.TabIndex = 34;
             // 
             // btnEliminarCita
             // 
@@ -61,6 +61,7 @@
             this.btnEliminarCita.TabIndex = 32;
             this.btnEliminarCita.Text = "Eliminar";
             this.btnEliminarCita.UseVisualStyleBackColor = false;
+            this.btnEliminarCita.Click += new System.EventHandler(this.btnEliminarCita_Click);
             // 
             // btnModificarCita
             // 
@@ -75,6 +76,7 @@
             this.btnModificarCita.TabIndex = 31;
             this.btnModificarCita.Text = "Modificar";
             this.btnModificarCita.UseVisualStyleBackColor = false;
+            this.btnModificarCita.Click += new System.EventHandler(this.btnModificarCita_Click);
             // 
             // btnBack
             // 
@@ -100,6 +102,7 @@
             this.btnAgregarCita.Size = new System.Drawing.Size(52, 42);
             this.btnAgregarCita.TabIndex = 35;
             this.btnAgregarCita.UseVisualStyleBackColor = true;
+            this.btnAgregarCita.Click += new System.EventHandler(this.btnAgregarCita_Click);
             // 
             // textBox1
             // 
@@ -131,14 +134,14 @@
             this.ClientSize = new System.Drawing.Size(1065, 553);
             this.Controls.Add(this.btnBack);
             this.Controls.Add(this.btnAgregarCita);
-            this.Controls.Add(this.dataGridView1);
+            this.Controls.Add(this.dataGridViewSinCitas);
             this.Controls.Add(this.textBox1);
             this.Controls.Add(this.btnEliminarCita);
             this.Controls.Add(this.btnModificarCita);
             this.Controls.Add(this.btnBuscarCita);
             this.Name = "SinCitas";
             this.Text = "SinCitas";
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewSinCitas)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -148,7 +151,7 @@
 
         private System.Windows.Forms.Button btnBack;
         private System.Windows.Forms.Button btnAgregarCita;
-        private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.DataGridView dataGridViewSinCitas;
         private System.Windows.Forms.Button btnEliminarCita;
         private System.Windows.Forms.Button btnModificarCita;
         private System.Windows.Forms.TextBox textBox1;

@@ -29,6 +29,17 @@ namespace ProyectoCatedra
             try
             {
                 dataGridViewTipoCorte.DataSource = tipoCorteDAL.GetAllTipoCorte();
+
+                // Hide ID column
+                if (dataGridViewTipoCorte.Columns["Id_corte"] != null)
+                    dataGridViewTipoCorte.Columns["Id_corte"].Visible = false;
+
+                // Optional: Format the Precio column as currency
+                if (dataGridViewTipoCorte.Columns["Precio"] != null)
+                {
+                    dataGridViewTipoCorte.Columns["Precio"].DefaultCellStyle.Format = "C2"; // Currency format
+                    dataGridViewTipoCorte.Columns["Precio"].HeaderText = "Precio";
+                }
             }
             catch (Exception ex)
             {
@@ -54,15 +65,14 @@ namespace ProyectoCatedra
 
         private void btnEliminarPeinado_Click(object sender, EventArgs e)
         {
-           if (dataGridViewTipoCorte.SelectedRows.Count > 0)
+            if (dataGridViewTipoCorte.SelectedRows.Count > 0)
             {
                 int id = Convert.ToInt32(dataGridViewTipoCorte.SelectedRows[0].Cells["Id_corte"].Value);
                 string tipoCorte = dataGridViewTipoCorte.SelectedRows[0].Cells["Tipo_corte"].Value.ToString();
 
-                // Show confirmation dialog
                 DialogResult result = MessageBox.Show(
-                    $"Esta seguro de eliminar el Tipo de corte '{tipoCorte}'?",
-                    "Confirmar eliminación",
+                    $"Are you sure you want to delete the type of cut '{tipoCorte}'?",
+                    "Confirm Deletion",
                     MessageBoxButtons.YesNo,
                     MessageBoxIcon.Warning);
 
@@ -71,30 +81,29 @@ namespace ProyectoCatedra
                     try
                     {
                         tipoCorteDAL.DeleteTipoCorte(id);
-                        MessageBox.Show("El tipo de corte fue eliminado exitosamente!");
+                        MessageBox.Show("Type of cut deleted successfully!");
                         LoadData();
                     }
                     catch (Exception ex)
                     {
-                        MessageBox.Show("Error: " + ex.Message);
+                        MessageBox.Show("Error deleting type of cut: " + ex.Message);
                     }
                 }
             }
             else
             {
-                MessageBox.Show("Por favor selecionar el tipo de corte que desea eliminar.");
+                MessageBox.Show("Please select a record to delete.");
             }
 
-           
+
         }
 
 
         private void btnAgregarCorte_Click(object sender, EventArgs e)
         {
 
-            // Open the form in Add mode
-            CRUTipoCorte AddTipoCorte = new CRUTipoCorte("Add");
-            if (AddTipoCorte.ShowDialog() == DialogResult.OK)
+            CRUTipoCorte form = new CRUTipoCorte("Add");
+            if (form.ShowDialog() == DialogResult.OK)
             {
                 LoadData();
             }
@@ -109,10 +118,10 @@ namespace ProyectoCatedra
                 int id = Convert.ToInt32(dataGridViewTipoCorte.SelectedRows[0].Cells["Id_corte"].Value);
                 string tipoCorte = dataGridViewTipoCorte.SelectedRows[0].Cells["Tipo_corte"].Value.ToString();
                 string descripcion = dataGridViewTipoCorte.SelectedRows[0].Cells["Descripcion"].Value.ToString();
+                decimal precio = Convert.ToDecimal(dataGridViewTipoCorte.SelectedRows[0].Cells["Precio"].Value);
 
-                // Open the form in Edit mode, passing the current record's data
-                CRUTipoCorte EditTipoCorte = new CRUTipoCorte("Edit", id, tipoCorte, descripcion);
-                if (EditTipoCorte.ShowDialog() == DialogResult.OK)
+                CRUTipoCorte form = new CRUTipoCorte("Edit", id, tipoCorte, descripcion, precio);
+                if (form.ShowDialog() == DialogResult.OK)
                 {
                     LoadData();
                 }
