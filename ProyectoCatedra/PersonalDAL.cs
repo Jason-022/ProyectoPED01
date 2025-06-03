@@ -1,90 +1,167 @@
-﻿using ProyectoCatedra;
-using System;
-using System.Collections.Generic;
+﻿using System;
 using System.Data;
 using System.Data.SqlClient;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
 
 namespace ProyectoCatedra
 {
     public class PersonalDAL
     {
-        public void AddPersonal(string nombre, string direccion, DateTime fechaNacimiento, int idRol)
+        private string connectionString = System.Configuration.ConfigurationManager.ConnectionStrings["BrothersBarberClubConnection"].ConnectionString;
+
+        public void AddPersonal(string nombrePersonal, string direccionPersonal, DateTime fechaNacimiento, string rol)
         {
-            using (SqlConnection conn = ConnectionHelper.GetConnection())
+            using (SqlConnection connection = new SqlConnection(connectionString))
             {
-                string query = "INSERT INTO personal (NombrePersonal, DireccionPersonal, FechaNacimiento, Id_rol) VALUES (@Nombre, @Direccion, @FechaNacimiento, @IdRol)";
-                using (SqlCommand cmd = new SqlCommand(query, conn))
+                connection.Open();
+                using (SqlTransaction transaction = connection.BeginTransaction())
                 {
-                    cmd.Parameters.AddWithValue("@Nombre", nombre);
-                    cmd.Parameters.AddWithValue("@Direccion", direccion);
-                    cmd.Parameters.AddWithValue("@FechaNacimiento", fechaNacimiento);
-                    cmd.Parameters.AddWithValue("@IdRol", idRol);
-                    conn.Open();
-                    cmd.ExecuteNonQuery();
+                    try
+                    {
+                        // Primero insertar el rol si no existe
+                        int idRol;
+                        using (SqlCommand cmd = new SqlCommand("SELECT Id_rolPersonal FROM rolPersonal WHERE Tipo_rol = @Tipo_rol", connection, transaction))
+                        {
+                            cmd.Parameters.AddWithValue("@Tipo_rol", rol);
+                            object result = cmd.ExecuteScalar();
+                            if (result == null)
+                            {
+                                // El rol no existe, lo insertamos
+                                using (SqlCommand insertCmd = new SqlCommand("INSERT INTO rolPersonal (Tipo_rol, Descripcion) VALUES (@Tipo_rol, @Descripcion); SELECT SCOPE_IDENTITY();", connection, transaction))
+                                {
+                                    insertCmd.Parameters.AddWithValue("@Tipo_rol", rol);
+                                    insertCmd.Parameters.AddWithValue("@Descripcion", "Rol de " + rol);
+                                    idRol = Convert.ToInt32(insertCmd.ExecuteScalar());
+                                }
+                            }
+                            else
+                            {
+                                idRol = Convert.ToInt32(result);
+                            }
+                        }
+
+                        // Luego insertar el personal
+                        using (SqlCommand cmd = new SqlCommand("INSERT INTO personal (NombrePersonal, DireccionPersonal, FechaNacimiento, Id_rol) VALUES (@NombrePersonal, @DireccionPersonal, @FechaNacimiento, @Id_rol)", connection, transaction))
+                        {
+                            cmd.Parameters.AddWithValue("@NombrePersonal", nombrePersonal);
+                            cmd.Parameters.AddWithValue("@DireccionPersonal", direccionPersonal);
+                            cmd.Parameters.AddWithValue("@FechaNacimiento", fechaNacimiento);
+                            cmd.Parameters.AddWithValue("@Id_rol", idRol);
+                            cmd.ExecuteNonQuery();
+                        }
+
+                        transaction.Commit();
+                    }
+                    catch
+                    {
+                        transaction.Rollback();
+                        throw;
+                    }
                 }
             }
         }
 
         public DataTable GetAllPersonal()
         {
-            using (SqlConnection conn = ConnectionHelper.GetConnection())
+            using (SqlConnection connection = new SqlConnection(connectionString))
             {
-                string query = "SELECT p.*, r.Tipo_rol FROM personal p JOIN rolPersonal r ON p.Id_rol = r.Id_rolPersonal";
-                using (SqlDataAdapter adapter = new SqlDataAdapter(query, conn))
+                using (SqlCommand cmd = new SqlCommand(@"
+                    SELECT p.Id_personal, p.NombrePersonal, p.DireccionPersonal, p.FechaNacimiento, r.Tipo_rol as Rol
+                    FROM personal p
+                    INNER JOIN rolPersonal r ON p.Id_rol = r.Id_rolPersonal", connection))
                 {
-                    DataTable dt = new DataTable();
-                    adapter.Fill(dt);
-                    return dt;
+                    using (SqlDataAdapter adapter = new SqlDataAdapter(cmd))
+                    {
+                        DataTable dt = new DataTable();
+                        adapter.Fill(dt);
+                        return dt;
+                    }
                 }
             }
         }
 
-        public void UpdatePersonal(int id, string nombre, string direccion, DateTime fechaNacimiento, int idRol)
+        public void UpdatePersonal(int id, string nombrePersonal, string direccionPersonal, DateTime fechaNacimiento, string rol)
         {
-            using (SqlConnection conn = ConnectionHelper.GetConnection())
+            using (SqlConnection connection = new SqlConnection(connectionString))
             {
-                string query = "UPDATE personal SET NombrePersonal = @Nombre, DireccionPersonal = @Direccion, FechaNacimiento = @FechaNacimiento, Id_rol = @IdRol WHERE Id_personal = @Id";
-                using (SqlCommand cmd = new SqlCommand(query, conn))
+                connection.Open();
+                using (SqlTransaction transaction = connection.BeginTransaction())
                 {
-                    cmd.Parameters.AddWithValue("@Id", id);
-                    cmd.Parameters.AddWithValue("@Nombre", nombre);
-                    cmd.Parameters.AddWithValue("@Direccion", direccion);
-                    cmd.Parameters.AddWithValue("@FechaNacimiento", fechaNacimiento);
-                    cmd.Parameters.AddWithValue("@IdRol", idRol);
-                    conn.Open();
-                    cmd.ExecuteNonQuery();
+                    try
+                    {
+                        // Primero obtener o insertar el rol
+                        int idRol;
+                        using (SqlCommand cmd = new SqlCommand("SELECT Id_rolPersonal FROM rolPersonal WHERE Tipo_rol = @Tipo_rol", connection, transaction))
+                        {
+                            cmd.Parameters.AddWithValue("@Tipo_rol", rol);
+                            object result = cmd.ExecuteScalar();
+                            if (result == null)
+                            {
+                                // El rol no existe, lo insertamos
+                                using (SqlCommand insertCmd = new SqlCommand("INSERT INTO rolPersonal (Tipo_rol, Descripcion) VALUES (@Tipo_rol, @Descripcion); SELECT SCOPE_IDENTITY();", connection, transaction))
+                                {
+                                    insertCmd.Parameters.AddWithValue("@Tipo_rol", rol);
+                                    insertCmd.Parameters.AddWithValue("@Descripcion", "Rol de " + rol);
+                                    idRol = Convert.ToInt32(insertCmd.ExecuteScalar());
+                                }
+                            }
+                            else
+                            {
+                                idRol = Convert.ToInt32(result);
+                            }
+                        }
+
+                        // Luego actualizar el personal
+                        using (SqlCommand cmd = new SqlCommand("UPDATE personal SET NombrePersonal = @NombrePersonal, DireccionPersonal = @DireccionPersonal, FechaNacimiento = @FechaNacimiento, Id_rol = @Id_rol WHERE Id_personal = @Id_personal", connection, transaction))
+                        {
+                            cmd.Parameters.AddWithValue("@Id_personal", id);
+                            cmd.Parameters.AddWithValue("@NombrePersonal", nombrePersonal);
+                            cmd.Parameters.AddWithValue("@DireccionPersonal", direccionPersonal);
+                            cmd.Parameters.AddWithValue("@FechaNacimiento", fechaNacimiento);
+                            cmd.Parameters.AddWithValue("@Id_rol", idRol);
+                            cmd.ExecuteNonQuery();
+                        }
+
+                        transaction.Commit();
+                    }
+                    catch
+                    {
+                        transaction.Rollback();
+                        throw;
+                    }
                 }
             }
         }
 
         public void DeletePersonal(int id)
         {
-            using (SqlConnection conn = ConnectionHelper.GetConnection())
+            using (SqlConnection connection = new SqlConnection(connectionString))
             {
-                string query = "DELETE FROM personal WHERE Id_personal = @Id";
-                using (SqlCommand cmd = new SqlCommand(query, conn))
+                using (SqlCommand cmd = new SqlCommand("DELETE FROM personal WHERE Id_personal = @Id_personal", connection))
                 {
-                    cmd.Parameters.AddWithValue("@Id", id);
-                    conn.Open();
+                    cmd.Parameters.AddWithValue("@Id_personal", id);
+                    connection.Open();
                     cmd.ExecuteNonQuery();
                 }
             }
         }
 
-        public DataTable GetAllRoles()
+        public DataTable BuscarPersonalPorNombre(string nombre)
         {
-            using (SqlConnection conn = ConnectionHelper.GetConnection())
+            using (SqlConnection connection = new SqlConnection(connectionString))
             {
-                string query = "SELECT Id_rolPersonal, Tipo_rol FROM rolPersonal";
-                using (SqlDataAdapter adapter = new SqlDataAdapter(query, conn))
+                using (SqlCommand cmd = new SqlCommand(@"
+                    SELECT p.Id_personal, p.NombrePersonal, p.DireccionPersonal, p.FechaNacimiento, r.Tipo_rol as Rol
+                    FROM personal p
+                    INNER JOIN rolPersonal r ON p.Id_rol = r.Id_rolPersonal
+                    WHERE p.NombrePersonal LIKE @NombrePersonal", connection))
                 {
-                    DataTable dt = new DataTable();
-                    adapter.Fill(dt);
-                    return dt;
+                    cmd.Parameters.AddWithValue("@NombrePersonal", "%" + nombre + "%");
+                    using (SqlDataAdapter adapter = new SqlDataAdapter(cmd))
+                    {
+                        DataTable dt = new DataTable();
+                        adapter.Fill(dt);
+                        return dt;
+                    }
                 }
             }
         }
