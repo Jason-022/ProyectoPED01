@@ -1,32 +1,28 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
-using static ProyectoCatedra.Agregar;
 
 namespace ProyectoCatedra
 {
-    public partial class registroPersonal: Form
+    public partial class registroPersonal : Form
     {
+        private PersonalDAL personalDAL = new PersonalDAL();
+
         public registroPersonal()
         {
             InitializeComponent();
+            LoadData();
         }
 
-        private void lbDirección_Click(object sender, EventArgs e)
+        private void LoadData()
         {
-
-        }
-
-        private void btnAgregarPersonal_Click(object sender, EventArgs e)
-        {
-            var form = new Agregar(ModoAgregar.Personal);
-            form.ShowDialog();
+            try
+            {
+                dataGridViewPersonal.DataSource = personalDAL.GetAllPersonal();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error al cargar los datos: " + ex.Message);
+            }
         }
 
         private void btnBack_Click(object sender, EventArgs e)
@@ -34,6 +30,88 @@ namespace ProyectoCatedra
             Administracion rAdmin = new Administracion();
             rAdmin.Show();
             this.Hide();
+        }
+
+        private void btnAgregarPersonal_Click(object sender, EventArgs e)
+        {
+            CRUPersonal addPersonal = new CRUPersonal("Add");
+            if (addPersonal.ShowDialog() == DialogResult.OK)
+            {
+                LoadData();
+            }
+        }
+
+        private void btnModificarPersonal_Click(object sender, EventArgs e)
+        {
+            if (dataGridViewPersonal.SelectedRows.Count > 0)
+            {
+                int id = Convert.ToInt32(dataGridViewPersonal.SelectedRows[0].Cells["Id_personal"].Value);
+                string nombrePersonal = dataGridViewPersonal.SelectedRows[0].Cells["NombrePersonal"].Value.ToString();
+                string direccionPersonal = dataGridViewPersonal.SelectedRows[0].Cells["DireccionPersonal"].Value.ToString();
+                DateTime fechaNacimiento = Convert.ToDateTime(dataGridViewPersonal.SelectedRows[0].Cells["FechaNacimiento"].Value);
+                string rol = dataGridViewPersonal.SelectedRows[0].Cells["Rol"].Value.ToString();
+
+                CRUPersonal editPersonal = new CRUPersonal("Edit", id, nombrePersonal, direccionPersonal, fechaNacimiento, rol);
+                if (editPersonal.ShowDialog() == DialogResult.OK)
+                {
+                    LoadData();
+                }
+            }
+            else
+            {
+                MessageBox.Show("Por favor seleccione un registro para modificar.");
+            }
+        }
+
+        private void btnEliminarPersonal_Click(object sender, EventArgs e)
+        {
+            if (dataGridViewPersonal.SelectedRows.Count > 0)
+            {
+                int id = Convert.ToInt32(dataGridViewPersonal.SelectedRows[0].Cells["Id_personal"].Value);
+                string nombrePersonal = dataGridViewPersonal.SelectedRows[0].Cells["NombrePersonal"].Value.ToString();
+
+                DialogResult result = MessageBox.Show(
+                    $"¿Está seguro de eliminar al personal '{nombrePersonal}'?",
+                    "Confirmar eliminación",
+                    MessageBoxButtons.YesNo,
+                    MessageBoxIcon.Warning);
+
+                if (result == DialogResult.Yes)
+                {
+                    try
+                    {
+                        personalDAL.DeletePersonal(id);
+                        MessageBox.Show("Personal eliminado exitosamente!");
+                        LoadData();
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show("Error: " + ex.Message);
+                    }
+                }
+            }
+            else
+            {
+                MessageBox.Show("Por favor seleccione el personal que desea eliminar.");
+            }
+        }
+
+        private void btnBuscar_Click(object sender, EventArgs e)
+        {
+            string textoBusqueda = txtBuscar.Text.Trim();
+            if (string.IsNullOrWhiteSpace(textoBusqueda))
+            {
+                LoadData();
+                return;
+            }
+            try
+            {
+                dataGridViewPersonal.DataSource = personalDAL.BuscarPersonalPorNombre(textoBusqueda);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error al buscar: " + ex.Message);
+            }
         }
     }
 }
