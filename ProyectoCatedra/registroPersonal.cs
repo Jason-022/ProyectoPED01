@@ -1,11 +1,62 @@
 ﻿using System;
 using System.Windows.Forms;
+using System.Collections.Generic;
 
 namespace ProyectoCatedra
 {
     public partial class registroPersonal : Form
     {
         private PersonalDAL personalDAL = new PersonalDAL();
+
+        // Nodo y ABB para personal
+        private class PersonalNode
+        {
+            public int Id;
+            public string Nombre;
+            public string Direccion;
+            public DateTime FechaNacimiento;
+            public string Rol;
+            public PersonalNode Izq, Der;
+            public PersonalNode(int id, string nombre, string direccion, DateTime fechaNacimiento, string rol)
+            {
+                Id = id;
+                Nombre = nombre;
+                Direccion = direccion;
+                FechaNacimiento = fechaNacimiento;
+                Rol = rol;
+            }
+        }
+        private class PersonalABB
+        {
+            public PersonalNode Raiz;
+            public void Insertar(PersonalNode nodo)
+            {
+                Raiz = InsertarRec(Raiz, nodo);
+            }
+            private PersonalNode InsertarRec(PersonalNode actual, PersonalNode nodo)
+            {
+                if (actual == null) return nodo;
+                int cmp = string.Compare(nodo.Nombre, actual.Nombre, StringComparison.OrdinalIgnoreCase);
+                if (cmp < 0) actual.Izq = InsertarRec(actual.Izq, nodo);
+                else actual.Der = InsertarRec(actual.Der, nodo);
+                return actual;
+            }
+            public List<PersonalNode> BuscarPorNombre(string nombre)
+            {
+                var lista = new List<PersonalNode>();
+                BuscarRec(Raiz, nombre.ToLower(), lista);
+                return lista;
+            }
+            private void BuscarRec(PersonalNode actual, string nombre, List<PersonalNode> lista)
+            {
+                if (actual == null) return;
+                if (actual.Nombre.ToLower().Contains(nombre)) lista.Add(actual);
+                BuscarRec(actual.Izq, nombre, lista);
+                BuscarRec(actual.Der, nombre, lista);
+            }
+            public void Limpiar() { Raiz = null; }
+        }
+        private PersonalABB abbPersonal = new PersonalABB();
 
         public registroPersonal()
         {
@@ -17,7 +68,20 @@ namespace ProyectoCatedra
         {
             try
             {
-                dataGridViewPersonal.DataSource = personalDAL.GetAllPersonal();
+                var dt = personalDAL.GetAllPersonal();
+                dataGridViewPersonal.DataSource = dt;
+                // Actualizar ABB
+                abbPersonal.Limpiar();
+                foreach (System.Data.DataRow row in dt.Rows)
+                {
+                    abbPersonal.Insertar(new PersonalNode(
+                        Convert.ToInt32(row["Id_personal"]),
+                        row["NombrePersonal"].ToString(),
+                        row["DireccionPersonal"].ToString(),
+                        Convert.ToDateTime(row["FechaNacimiento"]),
+                        row["Rol"].ToString()
+                    ));
+                }
             }
             catch (Exception ex)
             {
@@ -106,12 +170,38 @@ namespace ProyectoCatedra
             }
             try
             {
-                dataGridViewPersonal.DataSource = personalDAL.BuscarPersonalPorNombre(textoBusqueda);
+                // Buscar en ABB
+                var resultados = abbPersonal.BuscarPorNombre(textoBusqueda);
+                if (resultados.Count > 0)
+                {
+                    var dt = new System.Data.DataTable();
+                    dt.Columns.Add("Id_personal", typeof(int));
+                    dt.Columns.Add("NombrePersonal", typeof(string));
+                    dt.Columns.Add("DireccionPersonal", typeof(string));
+                    dt.Columns.Add("FechaNacimiento", typeof(DateTime));
+                    dt.Columns.Add("Rol", typeof(string));
+                    foreach (var p in resultados)
+                    {
+                        dt.Rows.Add(p.Id, p.Nombre, p.Direccion, p.FechaNacimiento, p.Rol);
+                    }
+                    dataGridViewPersonal.DataSource = dt;
+                }
+                else
+                {
+                    // Si no hay resultados en ABB, recargar de la base de datos
+                    dataGridViewPersonal.DataSource = personalDAL.BuscarPersonalPorNombre(textoBusqueda);
+                    LoadData(); // Para mantener el ABB actualizado si hubo cambios
+                }
             }
             catch (Exception ex)
             {
                 MessageBox.Show("Error al buscar: " + ex.Message);
             }
+        }
+
+        private void dataGridViewPersonal_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
         }
     }
 }
