@@ -28,25 +28,25 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.dataGridViewSinCitas = new System.Windows.Forms.DataGridView();
             this.btnEliminarCita = new System.Windows.Forms.Button();
             this.btnModificarCita = new System.Windows.Forms.Button();
             this.btnBack = new System.Windows.Forms.Button();
             this.btnAgregarCita = new System.Windows.Forms.Button();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.txtBusquedaData = new System.Windows.Forms.TextBox();
             this.btnBuscarCita = new System.Windows.Forms.Button();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            this.btnBorrarFiltro = new System.Windows.Forms.Button();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewSinCitas)).BeginInit();
             this.SuspendLayout();
             // 
-            // dataGridView1
+            // dataGridViewSinCitas
             // 
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(27, 161);
-            this.dataGridView1.Margin = new System.Windows.Forms.Padding(4);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.RowHeadersWidth = 51;
-            this.dataGridView1.Size = new System.Drawing.Size(999, 374);
-            this.dataGridView1.TabIndex = 34;
+            this.dataGridViewSinCitas.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridViewSinCitas.Location = new System.Drawing.Point(20, 131);
+            this.dataGridViewSinCitas.Name = "dataGridViewSinCitas";
+            this.dataGridViewSinCitas.RowHeadersWidth = 51;
+            this.dataGridViewSinCitas.Size = new System.Drawing.Size(749, 304);
+            this.dataGridViewSinCitas.TabIndex = 34;
             // 
             // btnEliminarCita
             // 
@@ -54,13 +54,13 @@
             this.btnEliminarCita.FlatAppearance.BorderSize = 0;
             this.btnEliminarCita.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnEliminarCita.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(28)))), ((int)(((byte)(37)))), ((int)(((byte)(38)))));
-            this.btnEliminarCita.Location = new System.Drawing.Point(873, 111);
-            this.btnEliminarCita.Margin = new System.Windows.Forms.Padding(4);
+            this.btnEliminarCita.Location = new System.Drawing.Point(655, 90);
             this.btnEliminarCita.Name = "btnEliminarCita";
-            this.btnEliminarCita.Size = new System.Drawing.Size(131, 28);
+            this.btnEliminarCita.Size = new System.Drawing.Size(98, 23);
             this.btnEliminarCita.TabIndex = 32;
             this.btnEliminarCita.Text = "Eliminar";
             this.btnEliminarCita.UseVisualStyleBackColor = false;
+            this.btnEliminarCita.Click += new System.EventHandler(this.btnEliminarCita_Click);
             // 
             // btnModificarCita
             // 
@@ -68,23 +68,22 @@
             this.btnModificarCita.FlatAppearance.BorderSize = 0;
             this.btnModificarCita.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnModificarCita.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(28)))), ((int)(((byte)(37)))), ((int)(((byte)(38)))));
-            this.btnModificarCita.Location = new System.Drawing.Point(692, 111);
-            this.btnModificarCita.Margin = new System.Windows.Forms.Padding(4);
+            this.btnModificarCita.Location = new System.Drawing.Point(534, 90);
             this.btnModificarCita.Name = "btnModificarCita";
-            this.btnModificarCita.Size = new System.Drawing.Size(137, 28);
+            this.btnModificarCita.Size = new System.Drawing.Size(103, 23);
             this.btnModificarCita.TabIndex = 31;
             this.btnModificarCita.Text = "Modificar";
             this.btnModificarCita.UseVisualStyleBackColor = false;
+            this.btnModificarCita.Click += new System.EventHandler(this.btnModificarCita_Click);
             // 
             // btnBack
             // 
             this.btnBack.FlatAppearance.BorderSize = 0;
             this.btnBack.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnBack.Image = global::ProyectoCatedra.Properties.Resources.back;
-            this.btnBack.Location = new System.Drawing.Point(27, 16);
-            this.btnBack.Margin = new System.Windows.Forms.Padding(4);
+            this.btnBack.Location = new System.Drawing.Point(20, 13);
             this.btnBack.Name = "btnBack";
-            this.btnBack.Size = new System.Drawing.Size(33, 38);
+            this.btnBack.Size = new System.Drawing.Size(25, 31);
             this.btnBack.TabIndex = 36;
             this.btnBack.UseVisualStyleBackColor = true;
             this.btnBack.Click += new System.EventHandler(this.btnBack_Click);
@@ -94,20 +93,19 @@
             this.btnAgregarCita.FlatAppearance.BorderSize = 0;
             this.btnAgregarCita.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnAgregarCita.Image = global::ProyectoCatedra.Properties.Resources.corte_de_pelo_plus32x;
-            this.btnAgregarCita.Location = new System.Drawing.Point(27, 111);
-            this.btnAgregarCita.Margin = new System.Windows.Forms.Padding(4);
+            this.btnAgregarCita.Location = new System.Drawing.Point(20, 90);
             this.btnAgregarCita.Name = "btnAgregarCita";
-            this.btnAgregarCita.Size = new System.Drawing.Size(52, 42);
+            this.btnAgregarCita.Size = new System.Drawing.Size(39, 34);
             this.btnAgregarCita.TabIndex = 35;
             this.btnAgregarCita.UseVisualStyleBackColor = true;
+            this.btnAgregarCita.Click += new System.EventHandler(this.btnAgregarCita_Click);
             // 
-            // textBox1
+            // txtBusquedaData
             // 
-            this.textBox1.Location = new System.Drawing.Point(212, 111);
-            this.textBox1.Margin = new System.Windows.Forms.Padding(4);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(237, 22);
-            this.textBox1.TabIndex = 33;
+            this.txtBusquedaData.Location = new System.Drawing.Point(65, 90);
+            this.txtBusquedaData.Name = "txtBusquedaData";
+            this.txtBusquedaData.Size = new System.Drawing.Size(179, 20);
+            this.txtBusquedaData.TabIndex = 33;
             // 
             // btnBuscarCita
             // 
@@ -115,30 +113,47 @@
             this.btnBuscarCita.FlatAppearance.BorderSize = 0;
             this.btnBuscarCita.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnBuscarCita.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(28)))), ((int)(((byte)(37)))), ((int)(((byte)(38)))));
-            this.btnBuscarCita.Location = new System.Drawing.Point(492, 111);
-            this.btnBuscarCita.Margin = new System.Windows.Forms.Padding(4);
+            this.btnBuscarCita.Location = new System.Drawing.Point(250, 90);
             this.btnBuscarCita.Name = "btnBuscarCita";
-            this.btnBuscarCita.Size = new System.Drawing.Size(161, 28);
+            this.btnBuscarCita.Size = new System.Drawing.Size(121, 23);
             this.btnBuscarCita.TabIndex = 30;
             this.btnBuscarCita.Text = "Buscar";
             this.btnBuscarCita.UseVisualStyleBackColor = false;
+            this.btnBuscarCita.Click += new System.EventHandler(this.btnBuscarCita_Click);
+            // 
+            // btnBorrarFiltro
+            // 
+            this.btnBorrarFiltro.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(212)))), ((int)(((byte)(175)))), ((int)(((byte)(55)))));
+            this.btnBorrarFiltro.FlatAppearance.BorderSize = 0;
+            this.btnBorrarFiltro.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnBorrarFiltro.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(28)))), ((int)(((byte)(37)))), ((int)(((byte)(38)))));
+            this.btnBorrarFiltro.Location = new System.Drawing.Point(392, 90);
+            this.btnBorrarFiltro.Name = "btnBorrarFiltro";
+            this.btnBorrarFiltro.Size = new System.Drawing.Size(121, 23);
+            this.btnBorrarFiltro.TabIndex = 37;
+            this.btnBorrarFiltro.Text = "Borrar Filtro";
+            this.btnBorrarFiltro.UseVisualStyleBackColor = false;
+            this.btnBorrarFiltro.Click += new System.EventHandler(this.btnBorrarFiltro_Click);
             // 
             // SinCitas
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(28)))), ((int)(((byte)(37)))), ((int)(((byte)(38)))));
-            this.ClientSize = new System.Drawing.Size(1065, 553);
+            this.ClientSize = new System.Drawing.Size(799, 449);
+            this.Controls.Add(this.btnBorrarFiltro);
             this.Controls.Add(this.btnBack);
             this.Controls.Add(this.btnAgregarCita);
-            this.Controls.Add(this.dataGridView1);
-            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.dataGridViewSinCitas);
+            this.Controls.Add(this.txtBusquedaData);
             this.Controls.Add(this.btnEliminarCita);
             this.Controls.Add(this.btnModificarCita);
             this.Controls.Add(this.btnBuscarCita);
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "SinCitas";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "SinCitas";
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewSinCitas)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -148,10 +163,11 @@
 
         private System.Windows.Forms.Button btnBack;
         private System.Windows.Forms.Button btnAgregarCita;
-        private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.DataGridView dataGridViewSinCitas;
         private System.Windows.Forms.Button btnEliminarCita;
         private System.Windows.Forms.Button btnModificarCita;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox txtBusquedaData;
         private System.Windows.Forms.Button btnBuscarCita;
+        private System.Windows.Forms.Button btnBorrarFiltro;
     }
 }

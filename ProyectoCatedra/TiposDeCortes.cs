@@ -29,10 +29,19 @@ namespace ProyectoCatedra
             try
             {
                 dataGridViewTipoCorte.DataSource = tipoCorteDAL.GetAllTipoCorte();
+
+                if (dataGridViewTipoCorte.Columns["Id_corte"] != null)
+                    dataGridViewTipoCorte.Columns["Id_corte"].Visible = false;
+
+                if (dataGridViewTipoCorte.Columns["Precio"] != null)
+                {
+                    dataGridViewTipoCorte.Columns["Precio"].DefaultCellStyle.Format = "C2"; 
+                    dataGridViewTipoCorte.Columns["Precio"].HeaderText = "Precio";
+                }
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Error loading data: " + ex.Message);
+                MessageBox.Show("Error al cargar la información: " + ex.Message);
             }
         }
 
@@ -54,15 +63,14 @@ namespace ProyectoCatedra
 
         private void btnEliminarPeinado_Click(object sender, EventArgs e)
         {
-           if (dataGridViewTipoCorte.SelectedRows.Count > 0)
+            if (dataGridViewTipoCorte.SelectedRows.Count > 0)
             {
                 int id = Convert.ToInt32(dataGridViewTipoCorte.SelectedRows[0].Cells["Id_corte"].Value);
                 string tipoCorte = dataGridViewTipoCorte.SelectedRows[0].Cells["Tipo_corte"].Value.ToString();
 
-                // Show confirmation dialog
                 DialogResult result = MessageBox.Show(
-                    $"Esta seguro de eliminar el Tipo de corte '{tipoCorte}'?",
-                    "Confirmar eliminación",
+                    $"Estas seguro de querer eliminar este corte'{tipoCorte}'?",
+                    "Confirmación de eliminación",
                     MessageBoxButtons.YesNo,
                     MessageBoxIcon.Warning);
 
@@ -71,30 +79,29 @@ namespace ProyectoCatedra
                     try
                     {
                         tipoCorteDAL.DeleteTipoCorte(id);
-                        MessageBox.Show("El tipo de corte fue eliminado exitosamente!");
+                        MessageBox.Show("Tipo de corte eliminado!");
                         LoadData();
                     }
                     catch (Exception ex)
                     {
-                        MessageBox.Show("Error: " + ex.Message);
+                        MessageBox.Show("Error al eliminar el tipo corte: " + ex.Message);
                     }
                 }
             }
             else
             {
-                MessageBox.Show("Por favor selecionar el tipo de corte que desea eliminar.");
+                MessageBox.Show("Por favor, selecciona el registro a eliminar.");
             }
 
-           
+
         }
 
 
         private void btnAgregarCorte_Click(object sender, EventArgs e)
         {
 
-            // Open the form in Add mode
-            CRUTipoCorte AddTipoCorte = new CRUTipoCorte("Add");
-            if (AddTipoCorte.ShowDialog() == DialogResult.OK)
+            CRUTipoCorte form = new CRUTipoCorte("Add");
+            if (form.ShowDialog() == DialogResult.OK)
             {
                 LoadData();
             }
@@ -109,17 +116,17 @@ namespace ProyectoCatedra
                 int id = Convert.ToInt32(dataGridViewTipoCorte.SelectedRows[0].Cells["Id_corte"].Value);
                 string tipoCorte = dataGridViewTipoCorte.SelectedRows[0].Cells["Tipo_corte"].Value.ToString();
                 string descripcion = dataGridViewTipoCorte.SelectedRows[0].Cells["Descripcion"].Value.ToString();
+                decimal precio = Convert.ToDecimal(dataGridViewTipoCorte.SelectedRows[0].Cells["Precio"].Value);
 
-                // Open the form in Edit mode, passing the current record's data
-                CRUTipoCorte EditTipoCorte = new CRUTipoCorte("Edit", id, tipoCorte, descripcion);
-                if (EditTipoCorte.ShowDialog() == DialogResult.OK)
+                CRUTipoCorte form = new CRUTipoCorte("Edit", id, tipoCorte, descripcion, precio);
+                if (form.ShowDialog() == DialogResult.OK)
                 {
                     LoadData();
                 }
             }
             else
             {
-                MessageBox.Show("Please select a record to modify.");
+                MessageBox.Show("Por favor, selecciona el registro a modificar.");
             }
 
         }

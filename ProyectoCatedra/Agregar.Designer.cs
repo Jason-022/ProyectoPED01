@@ -57,9 +57,10 @@
             this.panelCita.Controls.Add(this.lblHora);
             this.panelCita.Controls.Add(this.dateTimePickerCita);
             this.panelCita.Controls.Add(this.lblFecha);
-            this.panelCita.Location = new System.Drawing.Point(12, 12);
+            this.panelCita.Location = new System.Drawing.Point(9, 10);
+            this.panelCita.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.panelCita.Name = "panelCita";
-            this.panelCita.Size = new System.Drawing.Size(537, 321);
+            this.panelCita.Size = new System.Drawing.Size(403, 261);
             this.panelCita.TabIndex = 0;
             this.panelCita.Visible = false;
             // 
@@ -71,9 +72,10 @@
             this.panelPersonal.Controls.Add(this.lblDireccionEmpleado);
             this.panelPersonal.Controls.Add(this.txtNombreEmpleado);
             this.panelPersonal.Controls.Add(this.lblNombrePersonal);
-            this.panelPersonal.Location = new System.Drawing.Point(3, 0);
+            this.panelPersonal.Location = new System.Drawing.Point(2, 0);
+            this.panelPersonal.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.panelPersonal.Name = "panelPersonal";
-            this.panelPersonal.Size = new System.Drawing.Size(537, 343);
+            this.panelPersonal.Size = new System.Drawing.Size(403, 279);
             this.panelPersonal.TabIndex = 6;
             this.panelPersonal.Visible = false;
             // 
@@ -81,103 +83,115 @@
             // 
             this.lblRolEmpleado.AutoSize = true;
             this.lblRolEmpleado.ForeColor = System.Drawing.SystemColors.ActiveBorder;
-            this.lblRolEmpleado.Location = new System.Drawing.Point(56, 210);
+            this.lblRolEmpleado.Location = new System.Drawing.Point(42, 171);
+            this.lblRolEmpleado.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblRolEmpleado.Name = "lblRolEmpleado";
-            this.lblRolEmpleado.Size = new System.Drawing.Size(116, 16);
+            this.lblRolEmpleado.Size = new System.Drawing.Size(90, 13);
             this.lblRolEmpleado.TabIndex = 5;
             this.lblRolEmpleado.Text = "Rol del Empleado";
             // 
             // cmbRolEmpleado
             // 
             this.cmbRolEmpleado.FormattingEnabled = true;
-            this.cmbRolEmpleado.Location = new System.Drawing.Point(57, 249);
+            this.cmbRolEmpleado.Location = new System.Drawing.Point(43, 202);
+            this.cmbRolEmpleado.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.cmbRolEmpleado.Name = "cmbRolEmpleado";
-            this.cmbRolEmpleado.Size = new System.Drawing.Size(178, 24);
+            this.cmbRolEmpleado.Size = new System.Drawing.Size(134, 21);
             this.cmbRolEmpleado.TabIndex = 4;
             // 
             // txtDireccionEmpleado
             // 
-            this.txtDireccionEmpleado.Location = new System.Drawing.Point(57, 160);
+            this.txtDireccionEmpleado.Location = new System.Drawing.Point(43, 130);
+            this.txtDireccionEmpleado.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.txtDireccionEmpleado.Name = "txtDireccionEmpleado";
-            this.txtDireccionEmpleado.Size = new System.Drawing.Size(437, 22);
+            this.txtDireccionEmpleado.Size = new System.Drawing.Size(329, 20);
             this.txtDireccionEmpleado.TabIndex = 3;
             // 
             // lblDireccionEmpleado
             // 
             this.lblDireccionEmpleado.AutoSize = true;
             this.lblDireccionEmpleado.ForeColor = System.Drawing.SystemColors.ActiveBorder;
-            this.lblDireccionEmpleado.Location = new System.Drawing.Point(54, 127);
+            this.lblDireccionEmpleado.Location = new System.Drawing.Point(40, 103);
+            this.lblDireccionEmpleado.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblDireccionEmpleado.Name = "lblDireccionEmpleado";
-            this.lblDireccionEmpleado.Size = new System.Drawing.Size(130, 16);
+            this.lblDireccionEmpleado.Size = new System.Drawing.Size(102, 13);
             this.lblDireccionEmpleado.TabIndex = 2;
             this.lblDireccionEmpleado.Text = "Direccion Empleado";
             // 
             // txtNombreEmpleado
             // 
-            this.txtNombreEmpleado.Location = new System.Drawing.Point(57, 68);
+            this.txtNombreEmpleado.Location = new System.Drawing.Point(43, 55);
+            this.txtNombreEmpleado.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.txtNombreEmpleado.Name = "txtNombreEmpleado";
-            this.txtNombreEmpleado.Size = new System.Drawing.Size(220, 22);
+            this.txtNombreEmpleado.Size = new System.Drawing.Size(166, 20);
             this.txtNombreEmpleado.TabIndex = 1;
             // 
             // lblNombrePersonal
             // 
             this.lblNombrePersonal.AutoSize = true;
             this.lblNombrePersonal.ForeColor = System.Drawing.SystemColors.ActiveBorder;
-            this.lblNombrePersonal.Location = new System.Drawing.Point(54, 26);
+            this.lblNombrePersonal.Location = new System.Drawing.Point(40, 21);
+            this.lblNombrePersonal.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblNombrePersonal.Name = "lblNombrePersonal";
-            this.lblNombrePersonal.Size = new System.Drawing.Size(144, 16);
+            this.lblNombrePersonal.Size = new System.Drawing.Size(111, 13);
             this.lblNombrePersonal.TabIndex = 0;
             this.lblNombrePersonal.Text = "Nombre del Empleado";
             // 
             // txtNombreCliente
             // 
-            this.txtNombreCliente.Location = new System.Drawing.Point(54, 239);
+            this.txtNombreCliente.Location = new System.Drawing.Point(40, 194);
+            this.txtNombreCliente.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.txtNombreCliente.Name = "txtNombreCliente";
-            this.txtNombreCliente.Size = new System.Drawing.Size(223, 22);
+            this.txtNombreCliente.Size = new System.Drawing.Size(168, 20);
             this.txtNombreCliente.TabIndex = 5;
             // 
             // lblNombreCliente
             // 
             this.lblNombreCliente.AutoSize = true;
             this.lblNombreCliente.ForeColor = System.Drawing.SystemColors.ActiveBorder;
-            this.lblNombreCliente.Location = new System.Drawing.Point(51, 210);
+            this.lblNombreCliente.Location = new System.Drawing.Point(38, 171);
+            this.lblNombreCliente.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblNombreCliente.Name = "lblNombreCliente";
-            this.lblNombreCliente.Size = new System.Drawing.Size(122, 16);
+            this.lblNombreCliente.Size = new System.Drawing.Size(96, 13);
             this.lblNombreCliente.TabIndex = 4;
             this.lblNombreCliente.Text = "Nombre del Cliente";
             // 
             // txtHoraCita
             // 
-            this.txtHoraCita.Location = new System.Drawing.Point(54, 160);
+            this.txtHoraCita.Location = new System.Drawing.Point(40, 130);
+            this.txtHoraCita.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.txtHoraCita.Name = "txtHoraCita";
-            this.txtHoraCita.Size = new System.Drawing.Size(132, 22);
+            this.txtHoraCita.Size = new System.Drawing.Size(100, 20);
             this.txtHoraCita.TabIndex = 3;
             // 
             // lblHora
             // 
             this.lblHora.AutoSize = true;
             this.lblHora.ForeColor = System.Drawing.SystemColors.ActiveBorder;
-            this.lblHora.Location = new System.Drawing.Point(51, 127);
+            this.lblHora.Location = new System.Drawing.Point(38, 103);
+            this.lblHora.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblHora.Name = "lblHora";
-            this.lblHora.Size = new System.Drawing.Size(82, 16);
+            this.lblHora.Size = new System.Drawing.Size(66, 13);
             this.lblHora.TabIndex = 2;
             this.lblHora.Text = "Hora de Cita";
             this.lblHora.Click += new System.EventHandler(this.label_Click);
             // 
             // dateTimePickerCita
             // 
-            this.dateTimePickerCita.Location = new System.Drawing.Point(54, 79);
+            this.dateTimePickerCita.Location = new System.Drawing.Point(40, 64);
+            this.dateTimePickerCita.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.dateTimePickerCita.Name = "dateTimePickerCita";
-            this.dateTimePickerCita.Size = new System.Drawing.Size(223, 22);
+            this.dateTimePickerCita.Size = new System.Drawing.Size(168, 20);
             this.dateTimePickerCita.TabIndex = 1;
             // 
             // lblFecha
             // 
             this.lblFecha.AutoSize = true;
             this.lblFecha.ForeColor = System.Drawing.SystemColors.ActiveBorder;
-            this.lblFecha.Location = new System.Drawing.Point(51, 48);
+            this.lblFecha.Location = new System.Drawing.Point(38, 39);
+            this.lblFecha.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblFecha.Name = "lblFecha";
-            this.lblFecha.Size = new System.Drawing.Size(90, 16);
+            this.lblFecha.Size = new System.Drawing.Size(73, 13);
             this.lblFecha.TabIndex = 0;
             this.lblFecha.Text = "Fecha de Cita";
             this.lblFecha.Click += new System.EventHandler(this.label1_Click);
@@ -186,9 +200,10 @@
             // 
             this.btnAceptar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(212)))), ((int)(((byte)(175)))), ((int)(((byte)(55)))));
             this.btnAceptar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnAceptar.Location = new System.Drawing.Point(220, 384);
+            this.btnAceptar.Location = new System.Drawing.Point(165, 312);
+            this.btnAceptar.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.btnAceptar.Name = "btnAceptar";
-            this.btnAceptar.Size = new System.Drawing.Size(113, 47);
+            this.btnAceptar.Size = new System.Drawing.Size(85, 38);
             this.btnAceptar.TabIndex = 1;
             this.btnAceptar.Text = "button1";
             this.btnAceptar.UseVisualStyleBackColor = false;
@@ -198,9 +213,10 @@
             // 
             this.btnCerrar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(212)))), ((int)(((byte)(175)))), ((int)(((byte)(55)))));
             this.btnCerrar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnCerrar.Location = new System.Drawing.Point(237, 473);
+            this.btnCerrar.Location = new System.Drawing.Point(165, 377);
+            this.btnCerrar.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.btnCerrar.Name = "btnCerrar";
-            this.btnCerrar.Size = new System.Drawing.Size(75, 23);
+            this.btnCerrar.Size = new System.Drawing.Size(85, 35);
             this.btnCerrar.TabIndex = 7;
             this.btnCerrar.Text = "Cerrar";
             this.btnCerrar.UseVisualStyleBackColor = false;
@@ -208,15 +224,15 @@
             // 
             // Agregar
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(28)))), ((int)(((byte)(37)))), ((int)(((byte)(38)))));
-            this.ClientSize = new System.Drawing.Size(561, 521);
+            this.ClientSize = new System.Drawing.Size(421, 423);
             this.Controls.Add(this.btnCerrar);
             this.Controls.Add(this.btnAceptar);
             this.Controls.Add(this.panelCita);
-            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "Agregar";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Agregar";
             this.Load += new System.EventHandler(this.Agregar_Load);
             this.panelCita.ResumeLayout(false);

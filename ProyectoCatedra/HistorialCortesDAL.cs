@@ -2,6 +2,7 @@
 using System;
 using System.Data;
 using System.Data.SqlClient;
+using System.Drawing;
 using System.Windows.Forms;
 
 namespace ProyectoCatedra
@@ -27,12 +28,34 @@ namespace ProyectoCatedra
                 }
             }
         }
-
+        public DataTable SearchHistorialCortesByNombre(string nombreReservacion)
+        {
+            using (SqlConnection conn = ConnectionHelper.GetConnection())
+            {
+                string query = @"SELECT h.*, p.NombrePersonal, c.Tipo_corte, c.Precio, r.Tipo_reservacion, e.Estado 
+                            FROM historialCortes h 
+                            JOIN personal p ON h.Id_barbero = p.Id_personal 
+                            JOIN tipoCorte c ON h.Id_tipoCorte = c.Id_corte 
+                            JOIN tipoReservacion r ON h.Id_tipoReservacion = r.Id_tipoReservacion 
+                            JOIN estadoReservaciones e ON h.Id_estadoReservacion = e.Id_estado 
+                            WHERE h.nombreReservacion LIKE @NombreReservacion";
+                using (SqlCommand cmd = new SqlCommand(query, conn))
+                {
+                    cmd.Parameters.AddWithValue("@NombreReservacion", "%" + nombreReservacion + "%");
+                    using (SqlDataAdapter adapter = new SqlDataAdapter(cmd))
+                    {
+                        DataTable dt = new DataTable();
+                        adapter.Fill(dt);
+                        return dt;
+                    }
+                }
+            }
+        }
         public DataTable GetAllHistorialCortes()
         {
             using (SqlConnection conn = ConnectionHelper.GetConnection())
             {
-                string query = @"SELECT h.*, p.NombrePersonal, c.Tipo_corte, r.Tipo_reservacion, e.Estado 
+                string query = @"SELECT h.*, p.NombrePersonal, c.Tipo_corte, c.Precio, r.Tipo_reservacion, e.Estado 
                                 FROM historialCortes h 
                                 JOIN personal p ON h.Id_barbero = p.Id_personal 
                                 JOIN tipoCorte c ON h.Id_tipoCorte = c.Id_corte 
@@ -100,7 +123,7 @@ namespace ProyectoCatedra
         {
             using (SqlConnection conn = ConnectionHelper.GetConnection())
             {
-                string query = "SELECT Id_corte, Tipo_corte FROM tipoCorte";
+                string query = "SELECT Id_corte, Tipo_corte, Precio FROM tipoCorte";
                 using (SqlDataAdapter adapter = new SqlDataAdapter(query, conn))
                 {
                     DataTable dt = new DataTable();
@@ -134,6 +157,109 @@ namespace ProyectoCatedra
                     DataTable dt = new DataTable();
                     adapter.Fill(dt);
                     return dt;
+                }
+            }
+        }
+
+        public bool IsStaffAvailable(DateTime fechaReservacion, TimeSpan horaReservacion, int idBarbero)
+        {
+            using (SqlConnection conn = ConnectionHelper.GetConnection())
+            {
+                string query = "SELECT COUNT(*) FROM historialCortes WHERE Id_barbero = @IdBarbero AND fechaReservacion = @Fecha AND horaReervacion = @Hora";
+                using (SqlCommand cmd = new SqlCommand(query, conn))
+                {
+                    cmd.Parameters.AddWithValue("@IdBarbero", idBarbero);
+                    cmd.Parameters.AddWithValue("@Fecha", fechaReservacion.Date);
+                    cmd.Parameters.AddWithValue("@Hora", horaReservacion);
+                    conn.Open();
+                    int count = (int)cmd.ExecuteScalar();
+                    return count == 0;
+                }
+            }
+        }
+
+        public TimeSpan SuggestNextAvailableTime(DateTime fechaReservacion, int idBarbero)
+        {
+            using (SqlConnection conn = ConnectionHelper.GetConnection())
+            {
+                string query = "SELECT horaReervacion FROM historialCortes WHERE Id_barbero = @IdBarbero AND fechaReservacion = @Fecha ORDER BY horaReervacion";
+                using (SqlCommand cmd = new SqlCommand(query, conn))
+                {
+                    cmd.Parameters.AddWithValue("@IdBarbero", idBarbero);
+                    cmd.Parameters.AddWithValue("@Fecha", fechaReservacion.Date);
+                    conn.Open();
+                    using (SqlDataReader reader = cmd.ExecuteReader())
+                    {
+                        TimeSpan currentTime = new TimeSpan(9, 0, 0); // Start at 9:00 AM
+                        TimeSpan endTime = new TimeSpan(17, 0, 0);   // End at 5:00 PM
+                        TimeSpan interval = new TimeSpan(1, 0, 0);    // 1-hour intervals
+
+                        while (reader.Read())
+                        {
+                            TimeSpan bookedTime = (TimeSpan)reader["horaReervacion"];
+                            if (bookedTime >= currentTime && bookedTime < endTime)
+                            {
+                                if (bookedTime > currentTime)
+                                {
+                                    return currentTime; // Return the current time if a gap is found
+                                }
+                                currentTime = bookedTime.Add(interval); // Move to the next hour
+                            }
+                        }
+
+                        if (currentTime >= endTime)
+                        {
+                            throw new Exception("No available slots for this barber on the selected date.");
+                        }
+
+                        return currentTime;
+                    }
+                }
+            }
+        }
+
+        public DataTable GetPersonnelByRole()
+        {
+            using (SqlConnection conn = ConnectionHelper.GetConnection())
+            {
+                string query = @"SELECT r.Tipo_rol, COUNT(p.Id_personal) as TotalPersonnel 
+                                FROM personal p 
+                                JOIN rolPersonal r ON p.Id_rol = r.Id_rolPersonal 
+                                GROUP BY r.Tipo_rol";
+                using (SqlDataAdapter adapter = new SqlDataAdapter(query, conn))
+                {
+                    DataTable dt = new DataTable();
+                    adapter.Fill(dt);
+                    return dt;
+                }
+            }
+        }
+
+        public int GetTotalAppointments()
+        {
+            using (SqlConnection conn = ConnectionHelper.GetConnection())
+            {
+                string query = "SELECT COUNT(*) FROM historialCortes";
+                using (SqlCommand cmd = new SqlCommand(query, conn))
+                {
+                    conn.Open();
+                    return (int)cmd.ExecuteScalar();
+                }
+            }
+        }
+
+        public decimal GetTotalPriceOfCuts()
+        {
+            using (SqlConnection conn = ConnectionHelper.GetConnection())
+            {
+                string query = @"SELECT SUM(c.Precio) 
+                                FROM historialCortes h 
+                                JOIN tipoCorte c ON h.Id_tipoCorte = c.Id_corte";
+                using (SqlCommand cmd = new SqlCommand(query, conn))
+                {
+                    conn.Open();
+                    object result = cmd.ExecuteScalar();
+                    return result != DBNull.Value ? (decimal)result : 0.00m;
                 }
             }
         }

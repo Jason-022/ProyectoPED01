@@ -14,20 +14,18 @@ namespace ProyectoCatedra
     {
 
         private TipoCorteDAL tipoCorteDAL = new TipoCorteDAL();
-        private string mode; // "Add" or "Edit"
-        private int id; // Used in Edit mode
-
-
-        // Constructor for Add mode
+        private string mode; 
+        private int id; 
+      
         public CRUTipoCorte(string mode)
         {
             InitializeComponent();
             this.mode = mode;
-            this.Text = "Tipo de corte";
+            this.Text = "Add Type of Cut";
         }
 
-        // Constructor for Edit mode
-        public CRUTipoCorte(string mode, int id, string tipoCorte, string descripcion)
+     
+        public CRUTipoCorte(string mode, int id, string tipoCorte, string descripcion, decimal precio)
         {
             InitializeComponent();
             this.mode = mode;
@@ -35,6 +33,7 @@ namespace ProyectoCatedra
             this.Text = "Edit Type of Cut";
             txtTipoCorte.Text = tipoCorte;
             txtDespcripcionCorte.Text = descripcion;
+            txtPrecio.Text = precio.ToString("F2"); 
         }
 
         private void btnCancelar_Click(object sender, EventArgs e)
@@ -49,22 +48,27 @@ namespace ProyectoCatedra
             {
                 string tipoCorte = txtTipoCorte.Text;
                 string descripcion = txtDespcripcionCorte.Text;
+                if (!decimal.TryParse(txtPrecio.Text, out decimal precio))
+                {
+                    MessageBox.Show("Por favor, ingresa un precio valido.");
+                    return;
+                }
 
                 if (string.IsNullOrWhiteSpace(tipoCorte))
                 {
-                    MessageBox.Show("Please enter a type of cut.");
+                    MessageBox.Show("Por favor, ingresa un tipo de corte.");
                     return;
                 }
 
                 if (mode == "Add")
                 {
-                    tipoCorteDAL.AddTipoCorte(tipoCorte, descripcion);
-                    MessageBox.Show("Type of cut added successfully!");
+                    tipoCorteDAL.AddTipoCorte(tipoCorte, descripcion, precio);
+                    MessageBox.Show("Tipo de corte agregado exitosamente!");
                 }
                 else if (mode == "Edit")
                 {
-                    tipoCorteDAL.UpdateTipoCorte(id, tipoCorte, descripcion);
-                    MessageBox.Show("Type of cut updated successfully!");
+                    tipoCorteDAL.UpdateTipoCorte(id, tipoCorte, descripcion, precio);
+                    MessageBox.Show("Typo de corte actaulizado exitosamente!");
                 }
 
                 DialogResult = DialogResult.OK;
@@ -72,7 +76,7 @@ namespace ProyectoCatedra
             }
             catch (Exception ex)
             {
-                MessageBox.Show($"Error {(mode == "Add" ? "adding" : "updating")} type of cut: " + ex.Message);
+                MessageBox.Show($"Error {(mode == "Add" ? "adding" : "updating")} Typo de corte: " + ex.Message);
             }
         }
     }

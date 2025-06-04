@@ -37,6 +37,8 @@
     <Reference Include="System" />
     <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Windows.Forms.DataVisualization" />
+    <Reference Include="System.Windows.Forms.DataVisualization.Design" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -67,6 +69,24 @@
       <DependentUpon>Citas.cs</DependentUpon>
     </Compile>
     <Compile Include="ConnectionHelper.cs" />
+    <Compile Include="CRUCitas.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CRUCitas.Designer.cs">
+      <DependentUpon>CRUCitas.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CRUPersonal.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CRUPersonal.Designer.cs">
+      <DependentUpon>CRUPersonal.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CRUSinCitas.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CRUSinCitas.Designer.cs">
+      <DependentUpon>CRUSinCitas.cs</DependentUpon>
+    </Compile>
     <Compile Include="EstadoReservacionesDAL.cs" />
     <Compile Include="HistorialCortesDAL.cs" />
     <Compile Include="Inicio.cs">
@@ -117,6 +137,8 @@
     <Compile Include="TiposDeCortes.Designer.cs">
       <DependentUpon>TiposDeCortes.cs</DependentUpon>
     </Compile>
+  </ItemGroup>
+  <ItemGroup>
     <EmbeddedResource Include="Administracion.resx">
       <DependentUpon>Administracion.cs</DependentUpon>
     </EmbeddedResource>
@@ -125,6 +147,15 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Citas.resx">
       <DependentUpon>Citas.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CRUCitas.resx">
+      <DependentUpon>CRUCitas.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CRUPersonal.resx">
+      <DependentUpon>CRUPersonal.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CRUSinCitas.resx">
+      <DependentUpon>CRUSinCitas.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Inicio.resx">
       <DependentUpon>Inicio.cs</DependentUpon>
@@ -157,6 +188,8 @@
     <EmbeddedResource Include="TiposDeCortes.resx">
       <DependentUpon>TiposDeCortes.cs</DependentUpon>
     </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
