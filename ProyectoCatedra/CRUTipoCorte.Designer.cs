@@ -35,8 +35,6 @@
             this.lbDescripcion = new System.Windows.Forms.Label();
             this.txtDespcripcionCorte = new System.Windows.Forms.TextBox();
             this.btnCancelar = new System.Windows.Forms.Button();
-            this.label1 = new System.Windows.Forms.Label();
-            this.txtPrecio = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
             // 
             // btnCerrar
@@ -54,7 +52,7 @@
             // 
             this.btnGuardar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(212)))), ((int)(((byte)(175)))), ((int)(((byte)(55)))));
             this.btnGuardar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnGuardar.Location = new System.Drawing.Point(290, 289);
+            this.btnGuardar.Location = new System.Drawing.Point(290, 240);
             this.btnGuardar.Name = "btnGuardar";
             this.btnGuardar.Size = new System.Drawing.Size(113, 47);
             this.btnGuardar.TabIndex = 9;
@@ -84,7 +82,7 @@
             // 
             this.lbDescripcion.AutoSize = true;
             this.lbDescripcion.ForeColor = System.Drawing.Color.White;
-            this.lbDescripcion.Location = new System.Drawing.Point(96, 116);
+            this.lbDescripcion.Location = new System.Drawing.Point(96, 67);
             this.lbDescripcion.Name = "lbDescripcion";
             this.lbDescripcion.Size = new System.Drawing.Size(124, 15);
             this.lbDescripcion.TabIndex = 3;
@@ -92,7 +90,7 @@
             // 
             // txtDespcripcionCorte
             // 
-            this.txtDespcripcionCorte.Location = new System.Drawing.Point(256, 129);
+            this.txtDespcripcionCorte.Location = new System.Drawing.Point(256, 80);
             this.txtDespcripcionCorte.Multiline = true;
             this.txtDespcripcionCorte.Name = "txtDespcripcionCorte";
             this.txtDespcripcionCorte.Size = new System.Drawing.Size(239, 109);
@@ -103,7 +101,7 @@
             this.btnCancelar.BackColor = System.Drawing.Color.Brown;
             this.btnCancelar.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btnCancelar.ForeColor = System.Drawing.Color.White;
-            this.btnCancelar.Location = new System.Drawing.Point(290, 370);
+            this.btnCancelar.Location = new System.Drawing.Point(290, 321);
             this.btnCancelar.Name = "btnCancelar";
             this.btnCancelar.Size = new System.Drawing.Size(113, 47);
             this.btnCancelar.TabIndex = 12;
@@ -111,32 +109,12 @@
             this.btnCancelar.UseVisualStyleBackColor = false;
             this.btnCancelar.Click += new System.EventHandler(this.btnCancelar_Click);
             // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.BackColor = System.Drawing.Color.Transparent;
-            this.label1.ForeColor = System.Drawing.Color.White;
-            this.label1.Location = new System.Drawing.Point(96, 80);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(42, 15);
-            this.label1.TabIndex = 16;
-            this.label1.Text = "Precio";
-            // 
-            // txtPrecio
-            // 
-            this.txtPrecio.Location = new System.Drawing.Point(256, 77);
-            this.txtPrecio.Name = "txtPrecio";
-            this.txtPrecio.Size = new System.Drawing.Size(239, 23);
-            this.txtPrecio.TabIndex = 15;
-            // 
             // CRUTipoCorte
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(28)))), ((int)(((byte)(37)))), ((int)(((byte)(38)))));
             this.ClientSize = new System.Drawing.Size(704, 431);
-            this.Controls.Add(this.label1);
-            this.Controls.Add(this.txtPrecio);
             this.Controls.Add(this.btnCancelar);
             this.Controls.Add(this.txtDespcripcionCorte);
             this.Controls.Add(this.lbDescripcion);
@@ -161,7 +139,5 @@
         private System.Windows.Forms.Label lbDescripcion;
         private System.Windows.Forms.TextBox txtDespcripcionCorte;
         private System.Windows.Forms.Button btnCancelar;
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.TextBox txtPrecio;
     }
 }

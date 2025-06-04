@@ -87,25 +87,23 @@ C:\Users\uve63\Downloads\ProyectoPED01-main\ProyectoPED01-main\ProyectoCatedra\o
 C:\Users\uve63\Downloads\ProyectoPED01-main\ProyectoPED01-main\ProyectoCatedra\obj\Debug\ProyectoCatedra.csproj.CoreCompileInputs.cache
 C:\Users\uve63\Downloads\ProyectoPED01-main\ProyectoPED01-main\ProyectoCatedra\obj\Debug\ProyectoCatedra.exe
 C:\Users\uve63\Downloads\ProyectoPED01-main\ProyectoPED01-main\ProyectoCatedra\obj\Debug\ProyectoCatedra.pdb
-C:\Users\apolo\OneDrive\Documents\Ingenieria\Ciclo 1\PED\Proyecto\Git\RamaJason\ProyectoPED01\ProyectoCatedra\bin\Debug\ProyectoCatedra.exe.config
-C:\Users\apolo\OneDrive\Documents\Ingenieria\Ciclo 1\PED\Proyecto\Git\RamaJason\ProyectoPED01\ProyectoCatedra\bin\Debug\ProyectoCatedra.exe
-C:\Users\apolo\OneDrive\Documents\Ingenieria\Ciclo 1\PED\Proyecto\Git\RamaJason\ProyectoPED01\ProyectoCatedra\bin\Debug\ProyectoCatedra.pdb
-C:\Users\apolo\OneDrive\Documents\Ingenieria\Ciclo 1\PED\Proyecto\Git\RamaJason\ProyectoPED01\ProyectoCatedra\obj\Debug\ProyectoCatedra.csproj.AssemblyReference.cache
-C:\Users\apolo\OneDrive\Documents\Ingenieria\Ciclo 1\PED\Proyecto\Git\RamaJason\ProyectoPED01\ProyectoCatedra\obj\Debug\ProyectoCatedra.exe.config
-C:\Users\apolo\OneDrive\Documents\Ingenieria\Ciclo 1\PED\Proyecto\Git\RamaJason\ProyectoPED01\ProyectoCatedra\obj\Debug\ProyectoCatedra.Administracion.resources
-C:\Users\apolo\OneDrive\Documents\Ingenieria\Ciclo 1\PED\Proyecto\Git\RamaJason\ProyectoPED01\ProyectoCatedra\obj\Debug\ProyectoCatedra.Agregar.resources
-C:\Users\apolo\OneDrive\Documents\Ingenieria\Ciclo 1\PED\Proyecto\Git\RamaJason\ProyectoPED01\ProyectoCatedra\obj\Debug\ProyectoCatedra.Citas.resources
-C:\Users\apolo\OneDrive\Documents\Ingenieria\Ciclo 1\PED\Proyecto\Git\RamaJason\ProyectoPED01\ProyectoCatedra\obj\Debug\ProyectoCatedra.CRUPersonal.resources
-C:\Users\apolo\OneDrive\Documents\Ingenieria\Ciclo 1\PED\Proyecto\Git\RamaJason\ProyectoPED01\ProyectoCatedra\obj\Debug\ProyectoCatedra.CRUSinCitas.resources
-C:\Users\apolo\OneDrive\Documents\Ingenieria\Ciclo 1\PED\Proyecto\Git\RamaJason\ProyectoPED01\ProyectoCatedra\obj\Debug\ProyectoCatedra.Inicio.resources
-C:\Users\apolo\OneDrive\Documents\Ingenieria\Ciclo 1\PED\Proyecto\Git\RamaJason\ProyectoPED01\ProyectoCatedra\obj\Debug\ProyectoCatedra.Inventarios.resources
-C:\Users\apolo\OneDrive\Documents\Ingenieria\Ciclo 1\PED\Proyecto\Git\RamaJason\ProyectoPED01\ProyectoCatedra\obj\Debug\ProyectoCatedra.Login.resources
-C:\Users\apolo\OneDrive\Documents\Ingenieria\Ciclo 1\PED\Proyecto\Git\RamaJason\ProyectoPED01\ProyectoCatedra\obj\Debug\ProyectoCatedra.CRUTipoCorte.resources
-C:\Users\apolo\OneDrive\Documents\Ingenieria\Ciclo 1\PED\Proyecto\Git\RamaJason\ProyectoPED01\ProyectoCatedra\obj\Debug\ProyectoCatedra.Properties.Resources.resources
-C:\Users\apolo\OneDrive\Documents\Ingenieria\Ciclo 1\PED\Proyecto\Git\RamaJason\ProyectoPED01\ProyectoCatedra\obj\Debug\ProyectoCatedra.registroPersonal.resources
-C:\Users\apolo\OneDrive\Documents\Ingenieria\Ciclo 1\PED\Proyecto\Git\RamaJason\ProyectoPED01\ProyectoCatedra\obj\Debug\ProyectoCatedra.SinCitas.resources
-C:\Users\apolo\OneDrive\Documents\Ingenieria\Ciclo 1\PED\Proyecto\Git\RamaJason\ProyectoPED01\ProyectoCatedra\obj\Debug\ProyectoCatedra.TiposDeCortes.resources
-C:\Users\apolo\OneDrive\Documents\Ingenieria\Ciclo 1\PED\Proyecto\Git\RamaJason\ProyectoPED01\ProyectoCatedra\obj\Debug\ProyectoCatedra.csproj.GenerateResource.cache
-C:\Users\apolo\OneDrive\Documents\Ingenieria\Ciclo 1\PED\Proyecto\Git\RamaJason\ProyectoPED01\ProyectoCatedra\obj\Debug\ProyectoCatedra.csproj.CoreCompileInputs.cache
-C:\Users\apolo\OneDrive\Documents\Ingenieria\Ciclo 1\PED\Proyecto\Git\RamaJason\ProyectoPED01\ProyectoCatedra\obj\Debug\ProyectoCatedra.exe
-C:\Users\apolo\OneDrive\Documents\Ingenieria\Ciclo 1\PED\Proyecto\Git\RamaJason\ProyectoPED01\ProyectoCatedra\obj\Debug\ProyectoCatedra.pdb
+C:\Users\uve63\OneDrive\Documents\Projects\ProyectoPED01\ProyectoPED01\ProyectoCatedra\bin\Debug\ProyectoCatedra.exe.config
+C:\Users\uve63\OneDrive\Documents\Projects\ProyectoPED01\ProyectoPED01\ProyectoCatedra\bin\Debug\ProyectoCatedra.exe
+C:\Users\uve63\OneDrive\Documents\Projects\ProyectoPED01\ProyectoPED01\ProyectoCatedra\bin\Debug\ProyectoCatedra.pdb
+C:\Users\uve63\OneDrive\Documents\Projects\ProyectoPED01\ProyectoPED01\ProyectoCatedra\obj\Debug\ProyectoCatedra.csproj.AssemblyReference.cache
+C:\Users\uve63\OneDrive\Documents\Projects\ProyectoPED01\ProyectoPED01\ProyectoCatedra\obj\Debug\ProyectoCatedra.Administracion.resources
+C:\Users\uve63\OneDrive\Documents\Projects\ProyectoPED01\ProyectoPED01\ProyectoCatedra\obj\Debug\ProyectoCatedra.Agregar.resources
+C:\Users\uve63\OneDrive\Documents\Projects\ProyectoPED01\ProyectoPED01\ProyectoCatedra\obj\Debug\ProyectoCatedra.Citas.resources
+C:\Users\uve63\OneDrive\Documents\Projects\ProyectoPED01\ProyectoPED01\ProyectoCatedra\obj\Debug\ProyectoCatedra.CRUPersonal.resources
+C:\Users\uve63\OneDrive\Documents\Projects\ProyectoPED01\ProyectoPED01\ProyectoCatedra\obj\Debug\ProyectoCatedra.Inicio.resources
+C:\Users\uve63\OneDrive\Documents\Projects\ProyectoPED01\ProyectoPED01\ProyectoCatedra\obj\Debug\ProyectoCatedra.Inventarios.resources
+C:\Users\uve63\OneDrive\Documents\Projects\ProyectoPED01\ProyectoPED01\ProyectoCatedra\obj\Debug\ProyectoCatedra.Login.resources
+C:\Users\uve63\OneDrive\Documents\Projects\ProyectoPED01\ProyectoPED01\ProyectoCatedra\obj\Debug\ProyectoCatedra.CRUTipoCorte.resources
+C:\Users\uve63\OneDrive\Documents\Projects\ProyectoPED01\ProyectoPED01\ProyectoCatedra\obj\Debug\ProyectoCatedra.Properties.Resources.resources
+C:\Users\uve63\OneDrive\Documents\Projects\ProyectoPED01\ProyectoPED01\ProyectoCatedra\obj\Debug\ProyectoCatedra.registroPersonal.resources
+C:\Users\uve63\OneDrive\Documents\Projects\ProyectoPED01\ProyectoPED01\ProyectoCatedra\obj\Debug\ProyectoCatedra.SinCitas.resources
+C:\Users\uve63\OneDrive\Documents\Projects\ProyectoPED01\ProyectoPED01\ProyectoCatedra\obj\Debug\ProyectoCatedra.TiposDeCortes.resources
+C:\Users\uve63\OneDrive\Documents\Projects\ProyectoPED01\ProyectoPED01\ProyectoCatedra\obj\Debug\ProyectoCatedra.csproj.GenerateResource.cache
+C:\Users\uve63\OneDrive\Documents\Projects\ProyectoPED01\ProyectoPED01\ProyectoCatedra\obj\Debug\ProyectoCatedra.csproj.CoreCompileInputs.cache
+C:\Users\uve63\OneDrive\Documents\Projects\ProyectoPED01\ProyectoPED01\ProyectoCatedra\obj\Debug\ProyectoCatedra.exe
+C:\Users\uve63\OneDrive\Documents\Projects\ProyectoPED01\ProyectoPED01\ProyectoCatedra\obj\Debug\ProyectoCatedra.pdb

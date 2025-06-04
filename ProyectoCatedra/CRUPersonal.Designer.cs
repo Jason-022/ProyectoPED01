@@ -33,7 +33,7 @@ namespace ProyectoCatedra
             this.txtNombrePersonal = new System.Windows.Forms.TextBox();
             this.txtDireccionPersonal = new System.Windows.Forms.TextBox();
             this.dtpFechaNacimiento = new System.Windows.Forms.DateTimePicker();
-            this.txtRol = new System.Windows.Forms.TextBox();
+            this.cmbRol = new System.Windows.Forms.ComboBox();
             this.lblNombre = new System.Windows.Forms.Label();
             this.lblDireccion = new System.Windows.Forms.Label();
             this.lblFechaNacimiento = new System.Windows.Forms.Label();
@@ -91,13 +91,19 @@ namespace ProyectoCatedra
             this.dtpFechaNacimiento.Size = new System.Drawing.Size(239, 27);
             this.dtpFechaNacimiento.TabIndex = 2;
             // 
-            // txtRol
+            // cmbRol
             // 
-            this.txtRol.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtRol.Location = new System.Drawing.Point(256, 172);
-            this.txtRol.Name = "txtRol";
-            this.txtRol.Size = new System.Drawing.Size(239, 27);
-            this.txtRol.TabIndex = 3;
+            this.cmbRol.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmbRol.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cmbRol.FormattingEnabled = true;
+            this.cmbRol.Items.AddRange(new object[] {
+                "Barbero",
+                "Limpieza",
+                "Administracion"});
+            this.cmbRol.Location = new System.Drawing.Point(256, 172);
+            this.cmbRol.Name = "cmbRol";
+            this.cmbRol.Size = new System.Drawing.Size(239, 27);
+            this.cmbRol.TabIndex = 3;
             // 
             // lblNombre
             // 
@@ -153,7 +159,7 @@ namespace ProyectoCatedra
             this.Controls.Add(this.lblFechaNacimiento);
             this.Controls.Add(this.lblDireccion);
             this.Controls.Add(this.lblNombre);
-            this.Controls.Add(this.txtRol);
+            this.Controls.Add(this.cmbRol);
             this.Controls.Add(this.dtpFechaNacimiento);
             this.Controls.Add(this.txtDireccionPersonal);
             this.Controls.Add(this.txtNombrePersonal);
@@ -177,7 +183,7 @@ namespace ProyectoCatedra
         private System.Windows.Forms.TextBox txtNombrePersonal;
         private System.Windows.Forms.TextBox txtDireccionPersonal;
         private System.Windows.Forms.DateTimePicker dtpFechaNacimiento;
-        private System.Windows.Forms.TextBox txtRol;
+        private System.Windows.Forms.ComboBox cmbRol;
         private System.Windows.Forms.Label lblNombre;
         private System.Windows.Forms.Label lblDireccion;
         private System.Windows.Forms.Label lblFechaNacimiento;

@@ -37,7 +37,7 @@ namespace ProyectoCatedra
                 txtNombrePersonal.Text = nombrePersonal;
                 txtDireccionPersonal.Text = direccionPersonal;
                 dtpFechaNacimiento.Value = fechaNacimiento;
-                txtRol.Text = rol;
+                cmbRol.SelectedItem = rol;
             }
             catch (Exception ex)
             {
@@ -58,7 +58,7 @@ namespace ProyectoCatedra
                 string nombrePersonal = txtNombrePersonal.Text.Trim();
                 string direccionPersonal = txtDireccionPersonal.Text.Trim();
                 DateTime fechaNacimiento = dtpFechaNacimiento.Value;
-                string rol = txtRol.Text.Trim();
+                string rol = cmbRol.SelectedItem?.ToString() ?? string.Empty;
 
                 if (string.IsNullOrWhiteSpace(nombrePersonal))
                 {
@@ -76,8 +76,8 @@ namespace ProyectoCatedra
 
                 if (string.IsNullOrWhiteSpace(rol))
                 {
-                    MessageBox.Show("Por favor ingrese el rol del personal.", "Validación", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                    txtRol.Focus();
+                    MessageBox.Show("Por favor seleccione el rol del personal.", "Validación", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    cmbRol.Focus();
                     return;
                 }
 

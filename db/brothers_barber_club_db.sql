@@ -59,22 +59,8 @@ Id_estadoReservacion int FOREIGN KEY REFERENCES estadoReservaciones(Id_estado)
 )
 go
 
-ALTER TABLE tipoCorte
-ADD Precio DECIMAL(10, 2) NOT NULL DEFAULT 0.00;
-
 INSERT INTO estadoReservaciones VALUES('Completado', 'Se realizo el corte')
 INSERT INTO estadoReservaciones VALUES('Cancelado', 'No se realizo el corte')
 INSERT INTO estadoReservaciones VALUES('Pendiente', 'A la espera del cliente')
 
-
-
-
-INSERT INTO tipoReservacion VALUES('Sin cita', 'El cliente no posee una cita agendada')
-INSERT INTO tipoReservacion VALUES('Con sita', 'El cliente agendó una cita con anticipación')
-
 SELECT * from estadoReservaciones
-SELECT * FROM historialCortes
-SELECT * FROM personal
-SELECT * FROM rolPersonal
-SELECT * FROM tipoCorte
-SELECT * FROM tipoReservacion

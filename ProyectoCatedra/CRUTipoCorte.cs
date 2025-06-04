@@ -17,16 +17,17 @@ namespace ProyectoCatedra
         private string mode; // "Add" or "Edit"
         private int id; // Used in Edit mode
 
+
         // Constructor for Add mode
         public CRUTipoCorte(string mode)
         {
             InitializeComponent();
             this.mode = mode;
-            this.Text = "Add Type of Cut";
+            this.Text = "Tipo de corte";
         }
 
         // Constructor for Edit mode
-        public CRUTipoCorte(string mode, int id, string tipoCorte, string descripcion, decimal precio)
+        public CRUTipoCorte(string mode, int id, string tipoCorte, string descripcion)
         {
             InitializeComponent();
             this.mode = mode;
@@ -34,7 +35,6 @@ namespace ProyectoCatedra
             this.Text = "Edit Type of Cut";
             txtTipoCorte.Text = tipoCorte;
             txtDespcripcionCorte.Text = descripcion;
-            txtPrecio.Text = precio.ToString("F2"); // Format as currency (e.g., 10.00)
         }
 
         private void btnCancelar_Click(object sender, EventArgs e)
@@ -49,11 +49,6 @@ namespace ProyectoCatedra
             {
                 string tipoCorte = txtTipoCorte.Text;
                 string descripcion = txtDespcripcionCorte.Text;
-                if (!decimal.TryParse(txtPrecio.Text, out decimal precio))
-                {
-                    MessageBox.Show("Please enter a valid price.");
-                    return;
-                }
 
                 if (string.IsNullOrWhiteSpace(tipoCorte))
                 {
@@ -63,12 +58,12 @@ namespace ProyectoCatedra
 
                 if (mode == "Add")
                 {
-                    tipoCorteDAL.AddTipoCorte(tipoCorte, descripcion, precio);
+                    tipoCorteDAL.AddTipoCorte(tipoCorte, descripcion);
                     MessageBox.Show("Type of cut added successfully!");
                 }
                 else if (mode == "Edit")
                 {
-                    tipoCorteDAL.UpdateTipoCorte(id, tipoCorte, descripcion, precio);
+                    tipoCorteDAL.UpdateTipoCorte(id, tipoCorte, descripcion);
                     MessageBox.Show("Type of cut updated successfully!");
                 }
 
