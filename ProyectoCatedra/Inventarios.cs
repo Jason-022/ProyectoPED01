@@ -147,7 +147,7 @@ namespace ProyectoCatedra
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Error loading summary charts: " + ex.Message);
+                MessageBox.Show("Error al cargar el resumen: " + ex.Message);
             }
         }
 

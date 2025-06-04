@@ -29,10 +29,10 @@
         private void InitializeComponent()
         {
             this.btnIniciarSesion = new System.Windows.Forms.Button();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.textBox2 = new System.Windows.Forms.TextBox();
-            this.txtUsuario = new System.Windows.Forms.Label();
-            this.txtContraseña = new System.Windows.Forms.Label();
+            this.txtUsuario = new System.Windows.Forms.TextBox();
+            this.txtPass = new System.Windows.Forms.TextBox();
+            this.lbUsuario = new System.Windows.Forms.Label();
+            this.lbContraseña = new System.Windows.Forms.Label();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
@@ -46,78 +46,75 @@
             this.btnIniciarSesion.FlatAppearance.BorderSize = 0;
             this.btnIniciarSesion.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnIniciarSesion.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(28)))), ((int)(((byte)(37)))), ((int)(((byte)(38)))));
-            this.btnIniciarSesion.Location = new System.Drawing.Point(225, 406);
+            this.btnIniciarSesion.Location = new System.Drawing.Point(169, 330);
             this.btnIniciarSesion.Margin = new System.Windows.Forms.Padding(0);
             this.btnIniciarSesion.Name = "btnIniciarSesion";
-            this.btnIniciarSesion.Size = new System.Drawing.Size(177, 28);
+            this.btnIniciarSesion.Size = new System.Drawing.Size(133, 23);
             this.btnIniciarSesion.TabIndex = 0;
             this.btnIniciarSesion.Text = "Iniciar sesión";
             this.btnIniciarSesion.UseVisualStyleBackColor = false;
             this.btnIniciarSesion.Click += new System.EventHandler(this.btnIniciarSesion_Click);
             // 
-            // textBox1
-            // 
-            this.textBox1.Location = new System.Drawing.Point(189, 283);
-            this.textBox1.Margin = new System.Windows.Forms.Padding(4);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(269, 22);
-            this.textBox1.TabIndex = 1;
-            // 
-            // textBox2
-            // 
-            this.textBox2.Location = new System.Drawing.Point(189, 338);
-            this.textBox2.Margin = new System.Windows.Forms.Padding(4);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(269, 22);
-            this.textBox2.TabIndex = 2;
-            // 
             // txtUsuario
             // 
-            this.txtUsuario.AutoSize = true;
-            this.txtUsuario.Font = new System.Drawing.Font("Calibri", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtUsuario.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(212)))), ((int)(((byte)(175)))), ((int)(((byte)(55)))));
-            this.txtUsuario.Location = new System.Drawing.Point(88, 287);
-            this.txtUsuario.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.txtUsuario.Location = new System.Drawing.Point(142, 230);
             this.txtUsuario.Name = "txtUsuario";
-            this.txtUsuario.Size = new System.Drawing.Size(55, 18);
-            this.txtUsuario.TabIndex = 4;
-            this.txtUsuario.Text = "Usuario";
+            this.txtUsuario.Size = new System.Drawing.Size(203, 20);
+            this.txtUsuario.TabIndex = 1;
             // 
-            // txtContraseña
+            // txtPass
             // 
-            this.txtContraseña.AutoSize = true;
-            this.txtContraseña.Font = new System.Drawing.Font("Calibri", 9F);
-            this.txtContraseña.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(212)))), ((int)(((byte)(175)))), ((int)(((byte)(55)))));
-            this.txtContraseña.Location = new System.Drawing.Point(64, 347);
-            this.txtContraseña.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.txtContraseña.Name = "txtContraseña";
-            this.txtContraseña.Size = new System.Drawing.Size(78, 18);
-            this.txtContraseña.TabIndex = 5;
-            this.txtContraseña.Text = "Contraseña";
+            this.txtPass.Location = new System.Drawing.Point(142, 275);
+            this.txtPass.Name = "txtPass";
+            this.txtPass.PasswordChar = '*';
+            this.txtPass.Size = new System.Drawing.Size(203, 20);
+            this.txtPass.TabIndex = 2;
+            // 
+            // lbUsuario
+            // 
+            this.lbUsuario.AutoSize = true;
+            this.lbUsuario.Font = new System.Drawing.Font("Calibri", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbUsuario.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(212)))), ((int)(((byte)(175)))), ((int)(((byte)(55)))));
+            this.lbUsuario.Location = new System.Drawing.Point(66, 233);
+            this.lbUsuario.Name = "lbUsuario";
+            this.lbUsuario.Size = new System.Drawing.Size(50, 14);
+            this.lbUsuario.TabIndex = 4;
+            this.lbUsuario.Text = "Usuario";
+            // 
+            // lbContraseña
+            // 
+            this.lbContraseña.AutoSize = true;
+            this.lbContraseña.Font = new System.Drawing.Font("Calibri", 9F);
+            this.lbContraseña.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(212)))), ((int)(((byte)(175)))), ((int)(((byte)(55)))));
+            this.lbContraseña.Location = new System.Drawing.Point(48, 282);
+            this.lbContraseña.Name = "lbContraseña";
+            this.lbContraseña.Size = new System.Drawing.Size(69, 14);
+            this.lbContraseña.TabIndex = 5;
+            this.lbContraseña.Text = "Contraseña";
             // 
             // pictureBox1
             // 
             this.pictureBox1.Image = global::ProyectoCatedra.Properties.Resources.Logo;
-            this.pictureBox1.Location = new System.Drawing.Point(225, 109);
+            this.pictureBox1.Location = new System.Drawing.Point(169, 89);
+            this.pictureBox1.Margin = new System.Windows.Forms.Padding(2);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(168, 153);
+            this.pictureBox1.Size = new System.Drawing.Size(126, 124);
             this.pictureBox1.TabIndex = 6;
             this.pictureBox1.TabStop = false;
             // 
             // Login
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(28)))), ((int)(((byte)(37)))), ((int)(((byte)(38)))));
-            this.ClientSize = new System.Drawing.Size(612, 565);
+            this.ClientSize = new System.Drawing.Size(459, 459);
             this.Controls.Add(this.pictureBox1);
-            this.Controls.Add(this.txtContraseña);
+            this.Controls.Add(this.lbContraseña);
+            this.Controls.Add(this.lbUsuario);
+            this.Controls.Add(this.txtPass);
             this.Controls.Add(this.txtUsuario);
-            this.Controls.Add(this.textBox2);
-            this.Controls.Add(this.textBox1);
             this.Controls.Add(this.btnIniciarSesion);
             this.ForeColor = System.Drawing.Color.White;
-            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "Login";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Login";
@@ -130,10 +127,10 @@
         #endregion
 
         private System.Windows.Forms.Button btnIniciarSesion;
-        private System.Windows.Forms.TextBox textBox1;
-        private System.Windows.Forms.TextBox textBox2;
-        private System.Windows.Forms.Label txtUsuario;
-        private System.Windows.Forms.Label txtContraseña;
+        private System.Windows.Forms.TextBox txtUsuario;
+        private System.Windows.Forms.TextBox txtPass;
+        private System.Windows.Forms.Label lbUsuario;
+        private System.Windows.Forms.Label lbContraseña;
         private System.Windows.Forms.PictureBox pictureBox1;
     }
 }

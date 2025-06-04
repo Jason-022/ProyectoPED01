@@ -41,20 +41,18 @@
             // dataGridViewTipoCorte
             // 
             this.dataGridViewTipoCorte.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridViewTipoCorte.Location = new System.Drawing.Point(13, 239);
-            this.dataGridViewTipoCorte.Margin = new System.Windows.Forms.Padding(4);
+            this.dataGridViewTipoCorte.Location = new System.Drawing.Point(10, 194);
             this.dataGridViewTipoCorte.Name = "dataGridViewTipoCorte";
             this.dataGridViewTipoCorte.RowHeadersWidth = 51;
-            this.dataGridViewTipoCorte.Size = new System.Drawing.Size(999, 374);
+            this.dataGridViewTipoCorte.Size = new System.Drawing.Size(749, 304);
             this.dataGridViewTipoCorte.TabIndex = 34;
             this.dataGridViewTipoCorte.SelectionChanged += new System.EventHandler(this.dataGridViewTipoCorte_SelectionChanged);
             // 
             // textBox1
             // 
-            this.textBox1.Location = new System.Drawing.Point(198, 189);
-            this.textBox1.Margin = new System.Windows.Forms.Padding(4);
+            this.textBox1.Location = new System.Drawing.Point(148, 154);
             this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(237, 22);
+            this.textBox1.Size = new System.Drawing.Size(179, 20);
             this.textBox1.TabIndex = 33;
             // 
             // btnEliminarPeinado
@@ -63,10 +61,9 @@
             this.btnEliminarPeinado.FlatAppearance.BorderSize = 0;
             this.btnEliminarPeinado.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnEliminarPeinado.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(28)))), ((int)(((byte)(37)))), ((int)(((byte)(38)))));
-            this.btnEliminarPeinado.Location = new System.Drawing.Point(859, 189);
-            this.btnEliminarPeinado.Margin = new System.Windows.Forms.Padding(4);
+            this.btnEliminarPeinado.Location = new System.Drawing.Point(644, 154);
             this.btnEliminarPeinado.Name = "btnEliminarPeinado";
-            this.btnEliminarPeinado.Size = new System.Drawing.Size(131, 28);
+            this.btnEliminarPeinado.Size = new System.Drawing.Size(98, 23);
             this.btnEliminarPeinado.TabIndex = 32;
             this.btnEliminarPeinado.Text = "Eliminar";
             this.btnEliminarPeinado.UseVisualStyleBackColor = false;
@@ -78,10 +75,9 @@
             this.btnModificarPeinado.FlatAppearance.BorderSize = 0;
             this.btnModificarPeinado.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnModificarPeinado.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(28)))), ((int)(((byte)(37)))), ((int)(((byte)(38)))));
-            this.btnModificarPeinado.Location = new System.Drawing.Point(678, 189);
-            this.btnModificarPeinado.Margin = new System.Windows.Forms.Padding(4);
+            this.btnModificarPeinado.Location = new System.Drawing.Point(508, 154);
             this.btnModificarPeinado.Name = "btnModificarPeinado";
-            this.btnModificarPeinado.Size = new System.Drawing.Size(137, 28);
+            this.btnModificarPeinado.Size = new System.Drawing.Size(103, 23);
             this.btnModificarPeinado.TabIndex = 31;
             this.btnModificarPeinado.Text = "Modificar";
             this.btnModificarPeinado.UseVisualStyleBackColor = false;
@@ -93,10 +89,9 @@
             this.btnBuscarPeinado.FlatAppearance.BorderSize = 0;
             this.btnBuscarPeinado.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnBuscarPeinado.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(28)))), ((int)(((byte)(37)))), ((int)(((byte)(38)))));
-            this.btnBuscarPeinado.Location = new System.Drawing.Point(478, 189);
-            this.btnBuscarPeinado.Margin = new System.Windows.Forms.Padding(4);
+            this.btnBuscarPeinado.Location = new System.Drawing.Point(358, 154);
             this.btnBuscarPeinado.Name = "btnBuscarPeinado";
-            this.btnBuscarPeinado.Size = new System.Drawing.Size(161, 28);
+            this.btnBuscarPeinado.Size = new System.Drawing.Size(121, 23);
             this.btnBuscarPeinado.TabIndex = 30;
             this.btnBuscarPeinado.Text = "Buscar peinado";
             this.btnBuscarPeinado.UseVisualStyleBackColor = false;
@@ -106,10 +101,9 @@
             this.btnBack.FlatAppearance.BorderSize = 0;
             this.btnBack.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnBack.Image = global::ProyectoCatedra.Properties.Resources.back;
-            this.btnBack.Location = new System.Drawing.Point(13, 13);
-            this.btnBack.Margin = new System.Windows.Forms.Padding(4);
+            this.btnBack.Location = new System.Drawing.Point(10, 11);
             this.btnBack.Name = "btnBack";
-            this.btnBack.Size = new System.Drawing.Size(42, 46);
+            this.btnBack.Size = new System.Drawing.Size(32, 37);
             this.btnBack.TabIndex = 36;
             this.btnBack.UseVisualStyleBackColor = true;
             this.btnBack.Click += new System.EventHandler(this.btnBack_Click);
@@ -119,20 +113,19 @@
             this.btnAgregarCorte.FlatAppearance.BorderSize = 0;
             this.btnAgregarCorte.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnAgregarCorte.Image = global::ProyectoCatedra.Properties.Resources.boton_circular_plus;
-            this.btnAgregarCorte.Location = new System.Drawing.Point(13, 177);
-            this.btnAgregarCorte.Margin = new System.Windows.Forms.Padding(4);
+            this.btnAgregarCorte.Location = new System.Drawing.Point(10, 144);
             this.btnAgregarCorte.Name = "btnAgregarCorte";
-            this.btnAgregarCorte.Size = new System.Drawing.Size(52, 54);
+            this.btnAgregarCorte.Size = new System.Drawing.Size(39, 44);
             this.btnAgregarCorte.TabIndex = 35;
             this.btnAgregarCorte.UseVisualStyleBackColor = true;
             this.btnAgregarCorte.Click += new System.EventHandler(this.btnAgregarCorte_Click);
             // 
             // TiposDeCortes
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(28)))), ((int)(((byte)(37)))), ((int)(((byte)(38)))));
-            this.ClientSize = new System.Drawing.Size(1039, 635);
+            this.ClientSize = new System.Drawing.Size(779, 516);
             this.Controls.Add(this.btnBack);
             this.Controls.Add(this.btnAgregarCorte);
             this.Controls.Add(this.dataGridViewTipoCorte);
@@ -140,7 +133,9 @@
             this.Controls.Add(this.btnEliminarPeinado);
             this.Controls.Add(this.btnModificarPeinado);
             this.Controls.Add(this.btnBuscarPeinado);
+            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.Name = "TiposDeCortes";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "TiposDeCortes";
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewTipoCorte)).EndInit();
             this.ResumeLayout(false);

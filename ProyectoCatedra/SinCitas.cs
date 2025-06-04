@@ -44,7 +44,7 @@ namespace ProyectoCatedra
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Error loading data: " + ex.Message);
+                MessageBox.Show("Error al cargar la información: " + ex.Message);
             }
         }
 
@@ -85,7 +85,7 @@ namespace ProyectoCatedra
             }
             else
             {
-                MessageBox.Show("Please select a record to modify.");
+                MessageBox.Show("Por favor, selecciona un registro a modificar.");
             }
         }
 
@@ -97,8 +97,8 @@ namespace ProyectoCatedra
                 string nombreReservacion = dataGridViewSinCitas.SelectedRows[0].Cells["nombreReservacion"].Value.ToString();
 
                 DialogResult result = MessageBox.Show(
-                    $"Are you sure you want to delete the reservation '{nombreReservacion}'?",
-                    "Confirm Deletion",
+                    $"¿Estás seguro que quieres eliminar la reservación? '{nombreReservacion}'?",
+                    "Realizar eliminación",
                     MessageBoxButtons.YesNo,
                     MessageBoxIcon.Warning);
 
@@ -107,21 +107,70 @@ namespace ProyectoCatedra
                     try
                     {
                         historialCortesDAL.DeleteHistorialCorte(id);
-                        MessageBox.Show("Reservation deleted successfully!");
+                        MessageBox.Show("Reservación eliminzada exitosamente!");
                         LoadData();
                     }
                     catch (Exception ex)
                     {
-                        MessageBox.Show("Error deleting reservation: " + ex.Message);
+                        MessageBox.Show("Error al eliminar la reservación: " + ex.Message);
                     }
                 }
             }
             else
             {
-                MessageBox.Show("Please select a record to delete.");
+                MessageBox.Show("Por favor, selecciona el registro a eliminar.");
             }
         }
+        private string busqueda;
+        private void btnBuscarCita_Click(object sender, EventArgs e)
+        {
+            busqueda = txtBusquedaData.Text;
+            try
+            {
+                if (string.IsNullOrEmpty(busqueda))
+                {
+                    // If search is empty, reload all data
+                    LoadData();
+                    MessageBox.Show("Mostrando todos los registros.", "Información", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+                else
+                {
+                    // Perform the search
+                    DataTable searchResults = historialCortesDAL.SearchHistorialCortesByNombre(busqueda);
+                    dataGridViewSinCitas.DataSource = searchResults;
 
+                    // Reapply formatting after search
+                    if (dataGridViewSinCitas.Columns["Id_barbero"] != null)
+                        dataGridViewSinCitas.Columns["Id_barbero"].Visible = false;
+                    if (dataGridViewSinCitas.Columns["Id_tipoCorte"] != null)
+                        dataGridViewSinCitas.Columns["Id_tipoCorte"].Visible = false;
+                    if (dataGridViewSinCitas.Columns["Id_tipoReservacion"] != null)
+                        dataGridViewSinCitas.Columns["Id_tipoReservacion"].Visible = false;
+                    if (dataGridViewSinCitas.Columns["Id_estadoReservacion"] != null)
+                        dataGridViewSinCitas.Columns["Id_estadoReservacion"].Visible = false;
 
+                    if (dataGridViewSinCitas.Columns["Precio"] != null)
+                    {
+                        dataGridViewSinCitas.Columns["Precio"].DefaultCellStyle.Format = "C2";
+                        dataGridViewSinCitas.Columns["Precio"].HeaderText = "Precio";
+                    }
+
+                    if (searchResults.Rows.Count == 0)
+                    {
+                        MessageBox.Show("No se encontraron registros con ese nombre de reservación.", "Sin Resultados", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Error al buscar registros: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+
+        }
+
+        private void btnBorrarFiltro_Click(object sender, EventArgs e)
+        {
+            LoadData();
+        }
     }
 }

@@ -66,7 +66,7 @@
             // 
             this.txtTipoCorte.Location = new System.Drawing.Point(256, 34);
             this.txtTipoCorte.Name = "txtTipoCorte";
-            this.txtTipoCorte.Size = new System.Drawing.Size(239, 23);
+            this.txtTipoCorte.Size = new System.Drawing.Size(239, 20);
             this.txtTipoCorte.TabIndex = 0;
             // 
             // lbTipoCorte
@@ -76,7 +76,7 @@
             this.lbTipoCorte.ForeColor = System.Drawing.Color.White;
             this.lbTipoCorte.Location = new System.Drawing.Point(96, 37);
             this.lbTipoCorte.Name = "lbTipoCorte";
-            this.lbTipoCorte.Size = new System.Drawing.Size(101, 15);
+            this.lbTipoCorte.Size = new System.Drawing.Size(89, 13);
             this.lbTipoCorte.TabIndex = 2;
             this.lbTipoCorte.Text = "Nombre del corte";
             // 
@@ -86,7 +86,7 @@
             this.lbDescripcion.ForeColor = System.Drawing.Color.White;
             this.lbDescripcion.Location = new System.Drawing.Point(96, 116);
             this.lbDescripcion.Name = "lbDescripcion";
-            this.lbDescripcion.Size = new System.Drawing.Size(124, 15);
+            this.lbDescripcion.Size = new System.Drawing.Size(107, 13);
             this.lbDescripcion.TabIndex = 3;
             this.lbDescripcion.Text = "Descripción del corte";
             // 
@@ -118,7 +118,7 @@
             this.label1.ForeColor = System.Drawing.Color.White;
             this.label1.Location = new System.Drawing.Point(96, 80);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(42, 15);
+            this.label1.Size = new System.Drawing.Size(37, 13);
             this.label1.TabIndex = 16;
             this.label1.Text = "Precio";
             // 
@@ -126,12 +126,12 @@
             // 
             this.txtPrecio.Location = new System.Drawing.Point(256, 77);
             this.txtPrecio.Name = "txtPrecio";
-            this.txtPrecio.Size = new System.Drawing.Size(239, 23);
+            this.txtPrecio.Size = new System.Drawing.Size(239, 20);
             this.txtPrecio.TabIndex = 15;
             // 
             // CRUTipoCorte
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(5F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(28)))), ((int)(((byte)(37)))), ((int)(((byte)(38)))));
             this.ClientSize = new System.Drawing.Size(704, 431);
@@ -146,6 +146,7 @@
             this.Controls.Add(this.btnGuardar);
             this.Font = new System.Drawing.Font("Calibri", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Name = "CRUTipoCorte";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Modificar";
             this.ResumeLayout(false);
             this.PerformLayout();

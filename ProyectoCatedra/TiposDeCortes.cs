@@ -30,20 +30,18 @@ namespace ProyectoCatedra
             {
                 dataGridViewTipoCorte.DataSource = tipoCorteDAL.GetAllTipoCorte();
 
-                // Hide ID column
                 if (dataGridViewTipoCorte.Columns["Id_corte"] != null)
                     dataGridViewTipoCorte.Columns["Id_corte"].Visible = false;
 
-                // Optional: Format the Precio column as currency
                 if (dataGridViewTipoCorte.Columns["Precio"] != null)
                 {
-                    dataGridViewTipoCorte.Columns["Precio"].DefaultCellStyle.Format = "C2"; // Currency format
+                    dataGridViewTipoCorte.Columns["Precio"].DefaultCellStyle.Format = "C2"; 
                     dataGridViewTipoCorte.Columns["Precio"].HeaderText = "Precio";
                 }
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Error loading data: " + ex.Message);
+                MessageBox.Show("Error al cargar la información: " + ex.Message);
             }
         }
 
@@ -71,8 +69,8 @@ namespace ProyectoCatedra
                 string tipoCorte = dataGridViewTipoCorte.SelectedRows[0].Cells["Tipo_corte"].Value.ToString();
 
                 DialogResult result = MessageBox.Show(
-                    $"Are you sure you want to delete the type of cut '{tipoCorte}'?",
-                    "Confirm Deletion",
+                    $"Estas seguro de querer eliminar este corte'{tipoCorte}'?",
+                    "Confirmación de eliminación",
                     MessageBoxButtons.YesNo,
                     MessageBoxIcon.Warning);
 
@@ -81,18 +79,18 @@ namespace ProyectoCatedra
                     try
                     {
                         tipoCorteDAL.DeleteTipoCorte(id);
-                        MessageBox.Show("Type of cut deleted successfully!");
+                        MessageBox.Show("Tipo de corte eliminado!");
                         LoadData();
                     }
                     catch (Exception ex)
                     {
-                        MessageBox.Show("Error deleting type of cut: " + ex.Message);
+                        MessageBox.Show("Error al eliminar el tipo corte: " + ex.Message);
                     }
                 }
             }
             else
             {
-                MessageBox.Show("Please select a record to delete.");
+                MessageBox.Show("Por favor, selecciona el registro a eliminar.");
             }
 
 
@@ -128,7 +126,7 @@ namespace ProyectoCatedra
             }
             else
             {
-                MessageBox.Show("Please select a record to modify.");
+                MessageBox.Show("Por favor, selecciona el registro a modificar.");
             }
 
         }

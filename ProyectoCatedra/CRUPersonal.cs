@@ -6,10 +6,9 @@ namespace ProyectoCatedra
     public partial class CRUPersonal : Form
     {
         private PersonalDAL personalDAL = new PersonalDAL();
-        private string mode; // "Add" or "Edit"
-        private int id; // Used in Edit mode
+        private string mode; 
+        private int id; 
 
-        // Constructor for Add mode
         public CRUPersonal(string mode)
         {
             try
@@ -25,7 +24,7 @@ namespace ProyectoCatedra
             }
         }
 
-        // Constructor for Edit mode
+        
         public CRUPersonal(string mode, int id, string nombrePersonal, string direccionPersonal, DateTime fechaNacimiento, string rol)
         {
             try

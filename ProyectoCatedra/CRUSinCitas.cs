@@ -19,7 +19,7 @@ namespace ProyectoCatedra
         {
 			InitializeComponent();
 			this.mode = mode;
-			this.Text = "Add Appointment";
+			this.Text = "Agregar cita";
 			LoadDropdowns();
 			dateTimePickerFechaReservacion.ValueChanged += DateTimePicker_ValueChanged;
 			comboBoxBarbero.SelectedIndexChanged += ComboBoxBarbero_SelectedIndexChanged;
@@ -32,7 +32,7 @@ namespace ProyectoCatedra
 			InitializeComponent();
 			this.mode = mode;
 			this.id = id;
-			this.Text = "Edit Appointment";
+			this.Text = "Editar cita";
 			txtNombreReservacion.Text = nombreReservacion;
 			dateTimePickerFechaReservacion.Value = fechaReservacion;
 			timePickerHoraReservacion.Value = DateTime.Today + horaReservacion;
@@ -52,7 +52,7 @@ namespace ProyectoCatedra
 				comboBoxBarbero.DisplayMember = "NombrePersonal";
 				comboBoxBarbero.ValueMember = "Id_personal";
 
-				// Load TipoCorte and format DisplayMember to show both type and price
+				
 				var tipoCorteData = historialCortesDAL.GetAllTipoCorte();
 				foreach (DataRow row in tipoCorteData.Rows)
 				{
@@ -72,7 +72,7 @@ namespace ProyectoCatedra
 			}
 			catch (Exception ex)
 			{
-				MessageBox.Show("Error loading dropdowns: " + ex.Message);
+				MessageBox.Show("Error al cargar lista: " + ex.Message);
 			}
 		}
 
@@ -102,12 +102,12 @@ namespace ProyectoCatedra
 				{
 					TimeSpan suggestedTime = historialCortesDAL.SuggestNextAvailableTime(selectedDate, idBarbero);
 					timePickerHoraReservacion.Value = selectedDate + suggestedTime;
-					MessageBox.Show($"Suggested time: {suggestedTime:hh\\:mm} on {selectedDate:yyyy-MM-dd}.");
+					MessageBox.Show($"Tiempo sugerido: {suggestedTime:hh\\:mm} on {selectedDate:yyyy-MM-dd}.");
 				}
 				catch (Exception ex)
 				{
-					MessageBox.Show(ex.Message, "No Available Slots", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-					timePickerHoraReservacion.Value = selectedDate + new TimeSpan(9, 0, 0); // Default to 9:00 AM
+					MessageBox.Show(ex.Message, "Espacio no disponible", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+					timePickerHoraReservacion.Value = selectedDate + new TimeSpan(9, 0, 0); 
 				}
 			}
 		}
@@ -126,7 +126,7 @@ namespace ProyectoCatedra
 
 				if (string.IsNullOrWhiteSpace(nombreReservacion))
 				{
-					MessageBox.Show("Please enter a reservation name.");
+					MessageBox.Show("Por favor, agrega nombre de reservación.");
 					return;
 				}
 
@@ -134,17 +134,17 @@ namespace ProyectoCatedra
 				{
 					if (!historialCortesDAL.IsStaffAvailable(fechaReservacion, horaReservacion, idBarbero))
 					{
-						MessageBox.Show($"The selected barber is not available at {horaReservacion:hh\\:mm} on {fechaReservacion:yyyy-MM-dd}. Please choose a different time or barber.");
+						MessageBox.Show($"El barbero selecionado no esta disponible a las {horaReservacion:hh\\:mm} en {fechaReservacion:yyyy-MM-dd}. Por favor, selecciona diferente barbero o tiempo.");
 						return;
 					}
 
 					historialCortesDAL.AddHistorialCorte(nombreReservacion, fechaReservacion, horaReservacion, idBarbero, idTipoCorte, idTipoReservacion, idEstado);
-					MessageBox.Show("Appointment added successfully!");
+					MessageBox.Show("Se agrego exitosamente!");
 				}
 				else if (mode == "Edit")
 				{
 					historialCortesDAL.UpdateHistorialCorte(id, nombreReservacion, fechaReservacion, horaReservacion, idBarbero, idTipoCorte, idTipoReservacion, idEstado);
-					MessageBox.Show("Appointment updated successfully!");
+					MessageBox.Show("Se ha actualizado exitosamente!");
 				}
 
 				DialogResult = DialogResult.OK;
@@ -152,7 +152,7 @@ namespace ProyectoCatedra
 			}
 			catch (Exception ex)
 			{
-				MessageBox.Show($"Error {(mode == "Add" ? "adding" : "updating")} appointment: " + ex.Message);
+				MessageBox.Show($"Error {(mode == "Agregar" ? "Agregando" : "Actualizando")} cita: " + ex.Message);
 			}
 		}
 

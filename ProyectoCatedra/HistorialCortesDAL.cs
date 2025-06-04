@@ -28,7 +28,29 @@ namespace ProyectoCatedra
                 }
             }
         }
-
+        public DataTable SearchHistorialCortesByNombre(string nombreReservacion)
+        {
+            using (SqlConnection conn = ConnectionHelper.GetConnection())
+            {
+                string query = @"SELECT h.*, p.NombrePersonal, c.Tipo_corte, c.Precio, r.Tipo_reservacion, e.Estado 
+                            FROM historialCortes h 
+                            JOIN personal p ON h.Id_barbero = p.Id_personal 
+                            JOIN tipoCorte c ON h.Id_tipoCorte = c.Id_corte 
+                            JOIN tipoReservacion r ON h.Id_tipoReservacion = r.Id_tipoReservacion 
+                            JOIN estadoReservaciones e ON h.Id_estadoReservacion = e.Id_estado 
+                            WHERE h.nombreReservacion LIKE @NombreReservacion";
+                using (SqlCommand cmd = new SqlCommand(query, conn))
+                {
+                    cmd.Parameters.AddWithValue("@NombreReservacion", "%" + nombreReservacion + "%");
+                    using (SqlDataAdapter adapter = new SqlDataAdapter(cmd))
+                    {
+                        DataTable dt = new DataTable();
+                        adapter.Fill(dt);
+                        return dt;
+                    }
+                }
+            }
+        }
         public DataTable GetAllHistorialCortes()
         {
             using (SqlConnection conn = ConnectionHelper.GetConnection())
