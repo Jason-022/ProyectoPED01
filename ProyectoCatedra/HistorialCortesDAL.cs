@@ -28,7 +28,29 @@ namespace ProyectoCatedra
                 }
             }
         }
-        public DataTable SearchHistorialCortesByNombre(string nombreReservacion)
+
+        //Parte de sin cita
+        public DataTable GetAllHistorialCortesSinCita()
+        {
+            using (SqlConnection conn = ConnectionHelper.GetConnection())
+            {
+                string query = @"SELECT h.*, p.NombrePersonal, c.Tipo_corte, c.Precio, r.Tipo_reservacion, e.Estado 
+                            FROM historialCortes h 
+                            JOIN personal p ON h.Id_barbero = p.Id_personal 
+                            JOIN tipoCorte c ON h.Id_tipoCorte = c.Id_corte 
+                            JOIN tipoReservacion r ON h.Id_tipoReservacion = r.Id_tipoReservacion 
+                            JOIN estadoReservaciones e ON h.Id_estadoReservacion = e.Id_estado
+                            WHERE r.Tipo_reservacion = 'Sin cita'";
+                using (SqlDataAdapter adapter = new SqlDataAdapter(query, conn))
+                {
+                    DataTable dt = new DataTable();
+                    adapter.Fill(dt);
+                    return dt;
+                }
+            }
+        }
+
+        public DataTable SearchHistorialCortesByNombreSinCita(string nombreReservacion)
         {
             using (SqlConnection conn = ConnectionHelper.GetConnection())
             {
@@ -38,7 +60,8 @@ namespace ProyectoCatedra
                             JOIN tipoCorte c ON h.Id_tipoCorte = c.Id_corte 
                             JOIN tipoReservacion r ON h.Id_tipoReservacion = r.Id_tipoReservacion 
                             JOIN estadoReservaciones e ON h.Id_estadoReservacion = e.Id_estado 
-                            WHERE h.nombreReservacion LIKE @NombreReservacion";
+                            WHERE h.nombreReservacion LIKE @NombreReservacion
+                            AND r.Tipo_reservacion = 'Sin cita'";
                 using (SqlCommand cmd = new SqlCommand(query, conn))
                 {
                     cmd.Parameters.AddWithValue("@NombreReservacion", "%" + nombreReservacion + "%");
@@ -51,6 +74,55 @@ namespace ProyectoCatedra
                 }
             }
         }
+
+
+        //Parte de con Cita
+
+        public DataTable GetAllHistorialCortesCitas()
+        {
+            using (SqlConnection conn = ConnectionHelper.GetConnection())
+            {
+                string query = @"SELECT h.*, p.NombrePersonal, c.Tipo_corte, c.Precio, r.Tipo_reservacion, e.Estado 
+                            FROM historialCortes h 
+                            JOIN personal p ON h.Id_barbero = p.Id_personal 
+                            JOIN tipoCorte c ON h.Id_tipoCorte = c.Id_corte 
+                            JOIN tipoReservacion r ON h.Id_tipoReservacion = r.Id_tipoReservacion 
+                            JOIN estadoReservaciones e ON h.Id_estadoReservacion = e.Id_estado
+                            WHERE r.Tipo_reservacion = 'Con cita'";
+                using (SqlDataAdapter adapter = new SqlDataAdapter(query, conn))
+                {
+                    DataTable dt = new DataTable();
+                    adapter.Fill(dt);
+                    return dt;
+                }
+            }
+        }
+
+        public DataTable SearchHistorialCortesByNombreCitas(string nombreReservacion)
+        {
+            using (SqlConnection conn = ConnectionHelper.GetConnection())
+            {
+                string query = @"SELECT h.*, p.NombrePersonal, c.Tipo_corte, c.Precio, r.Tipo_reservacion, e.Estado 
+                            FROM historialCortes h 
+                            JOIN personal p ON h.Id_barbero = p.Id_personal 
+                            JOIN tipoCorte c ON h.Id_tipoCorte = c.Id_corte 
+                            JOIN tipoReservacion r ON h.Id_tipoReservacion = r.Id_tipoReservacion 
+                            JOIN estadoReservaciones e ON h.Id_estadoReservacion = e.Id_estado 
+                            WHERE h.nombreReservacion LIKE @NombreReservacion
+                            AND r.Tipo_reservacion = 'Con cita'";
+                using (SqlCommand cmd = new SqlCommand(query, conn))
+                {
+                    cmd.Parameters.AddWithValue("@NombreReservacion", "%" + nombreReservacion + "%");
+                    using (SqlDataAdapter adapter = new SqlDataAdapter(cmd))
+                    {
+                        DataTable dt = new DataTable();
+                        adapter.Fill(dt);
+                        return dt;
+                    }
+                }
+            }
+        }
+
         public DataTable GetAllHistorialCortes()
         {
             using (SqlConnection conn = ConnectionHelper.GetConnection())
@@ -60,12 +132,38 @@ namespace ProyectoCatedra
                                 JOIN personal p ON h.Id_barbero = p.Id_personal 
                                 JOIN tipoCorte c ON h.Id_tipoCorte = c.Id_corte 
                                 JOIN tipoReservacion r ON h.Id_tipoReservacion = r.Id_tipoReservacion 
-                                JOIN estadoReservaciones e ON h.Id_estadoReservacion = e.Id_estado";
+                                JOIN estadoReservaciones e ON h.Id_estadoReservacion = e.Id_estado
+                                WHERE r.Tipo_reservacion = 'Sin Cita'";
                 using (SqlDataAdapter adapter = new SqlDataAdapter(query, conn))
                 {
                     DataTable dt = new DataTable();
                     adapter.Fill(dt);
                     return dt;
+                }
+            }
+        }
+
+        public DataTable SearchHistorialCortesByNombre(string nombreReservacion)
+        {
+            using (SqlConnection conn = ConnectionHelper.GetConnection())
+            {
+                string query = @"SELECT h.*, p.NombrePersonal, c.Tipo_corte, c.Precio, r.Tipo_reservacion, e.Estado 
+                                FROM historialCortes h 
+                                JOIN personal p ON h.Id_barbero = p.Id_personal 
+                                JOIN tipoCorte c ON h.Id_tipoCorte = c.Id_corte 
+                                JOIN tipoReservacion r ON h.Id_tipoReservacion = r.Id_tipoReservacion 
+                                JOIN estadoReservaciones e ON h.Id_estadoReservacion = e.Id_estado 
+                                WHERE h.nombreReservacion LIKE @NombreReservacion
+                                AND r.Tipo_reservacion = 'Sin Cita'";
+                using (SqlCommand cmd = new SqlCommand(query, conn))
+                {
+                    cmd.Parameters.AddWithValue("@NombreReservacion", "%" + nombreReservacion + "%");
+                    using (SqlDataAdapter adapter = new SqlDataAdapter(cmd))
+                    {
+                        DataTable dt = new DataTable();
+                        adapter.Fill(dt);
+                        return dt;
+                    }
                 }
             }
         }
@@ -260,6 +358,99 @@ namespace ProyectoCatedra
                     conn.Open();
                     object result = cmd.ExecuteScalar();
                     return result != DBNull.Value ? (decimal)result : 0.00m;
+                }
+            }
+        }
+
+        public int GetTotalPersonnel()
+        {
+            using (SqlConnection conn = ConnectionHelper.GetConnection())
+            {
+                string query = "SELECT COUNT(*) FROM personal";
+                using (SqlCommand cmd = new SqlCommand(query, conn))
+                {
+                    conn.Open();
+                    return (int)cmd.ExecuteScalar();
+                }
+            }
+        }
+
+        public int GetTotalTipoCorte()
+        {
+            using (SqlConnection conn = ConnectionHelper.GetConnection())
+            {
+                string query = "SELECT COUNT(*) FROM tipoCorte";
+                using (SqlCommand cmd = new SqlCommand(query, conn))
+                {
+                    conn.Open();
+                    return (int)cmd.ExecuteScalar();
+                }
+            }
+        }
+
+        public int GetHistorialCortesSinCita()
+        {
+            using (SqlConnection conn = ConnectionHelper.GetConnection())
+            {
+                string query = @"SELECT COUNT(*) 
+                                FROM historialCortes h 
+                                JOIN tipoReservacion r ON h.Id_tipoReservacion = r.Id_tipoReservacion 
+                                WHERE r.Tipo_reservacion = 'Sin Cita'";
+                using (SqlCommand cmd = new SqlCommand(query, conn))
+                {
+                    conn.Open();
+                    return (int)cmd.ExecuteScalar();
+                }
+            }
+        }
+
+        public int GetHistorialCortesConCita()
+        {
+            using (SqlConnection conn = ConnectionHelper.GetConnection())
+            {
+                string query = @"SELECT COUNT(*) 
+                                FROM historialCortes h 
+                                JOIN tipoReservacion r ON h.Id_tipoReservacion = r.Id_tipoReservacion 
+                                WHERE r.Tipo_reservacion = 'Con Cita'";
+                using (SqlCommand cmd = new SqlCommand(query, conn))
+                {
+                    conn.Open();
+                    return (int)cmd.ExecuteScalar();
+                }
+            }
+        }
+
+        public decimal GetTotalPriceOfCompletedCuts()
+        {
+            using (SqlConnection conn = ConnectionHelper.GetConnection())
+            {
+                string query = @"SELECT SUM(c.Precio) 
+                                FROM historialCortes h 
+                                JOIN tipoCorte c ON h.Id_tipoCorte = c.Id_corte 
+                                JOIN estadoReservaciones e ON h.Id_estadoReservacion = e.Id_estado 
+                                WHERE e.Estado = 'Completado'";
+                using (SqlCommand cmd = new SqlCommand(query, conn))
+                {
+                    conn.Open();
+                    object result = cmd.ExecuteScalar();
+                    return result != DBNull.Value ? (decimal)result : 0.00m;
+                }
+            }
+        }
+
+        public DataTable GetTipoReservacionCounts()
+        {
+            using (SqlConnection conn = ConnectionHelper.GetConnection())
+            {
+                string query = @"SELECT r.Tipo_reservacion, COUNT(*) as Total 
+                                FROM historialCortes h 
+                                JOIN tipoReservacion r ON h.Id_tipoReservacion = r.Id_tipoReservacion 
+                                GROUP BY r.Tipo_reservacion";
+                using (SqlDataAdapter adapter = new SqlDataAdapter(query, conn))
+                {
+                    DataTable dt = new DataTable();
+                    adapter.Fill(dt);
+                    return dt;
                 }
             }
         }

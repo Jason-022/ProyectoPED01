@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Data.SqlClient;
 using System.Drawing;
 using System.Linq;
 using System.Text;
@@ -17,14 +18,14 @@ namespace ProyectoCatedra
 		private int id; // Used in Edit mode
 		public CRUSinCitas(string mode)
         {
-			InitializeComponent();
-			this.mode = mode;
-			this.Text = "Agregar cita";
-			LoadDropdowns();
-			dateTimePickerFechaReservacion.ValueChanged += DateTimePicker_ValueChanged;
-			comboBoxBarbero.SelectedIndexChanged += ComboBoxBarbero_SelectedIndexChanged;
-			comboBoxTipoReservacion.SelectedValue = 1; ;
-		}
+            InitializeComponent();
+            this.mode = mode;
+            this.Text = "Add Appointment";
+            LoadDropdowns();
+            dateTimePickerFechaReservacion.ValueChanged += DateTimePicker_ValueChanged;
+            comboBoxBarbero.SelectedIndexChanged += ComboBoxBarbero_SelectedIndexChanged;
+            comboBoxTipoReservacion.SelectedValue = 1;
+        }
 
         // Constructor for Edit mode
         public CRUSinCitas(string mode, int id, string nombreReservacion, DateTime fechaReservacion, TimeSpan horaReservacion, int idBarbero, int idTipoCorte, int idTipoReservacion, int idEstado)
@@ -44,39 +45,52 @@ namespace ProyectoCatedra
 
 		}
 
-		private void LoadDropdowns()
-		{
-			try
-			{
-				comboBoxBarbero.DataSource = historialCortesDAL.GetAllPersonal();
-				comboBoxBarbero.DisplayMember = "NombrePersonal";
-				comboBoxBarbero.ValueMember = "Id_personal";
+        private void LoadDropdowns()
+        {
+            try
+            {
+                // Fetch only personnel with Barbero role directly from the database
+                using (SqlConnection conn = ConnectionHelper.GetConnection())
+                {
+                    string query = @"SELECT p.Id_personal, p.NombrePersonal 
+                                    FROM personal p 
+                                    JOIN rolPersonal rp ON p.Id_rol = rp.Id_rolPersonal 
+                                    WHERE rp.Tipo_rol = 'Barbero'";
+                    using (SqlDataAdapter adapter = new SqlDataAdapter(query, conn))
+                    {
+                        DataTable dt = new DataTable();
+                        adapter.Fill(dt);
+                        comboBoxBarbero.DataSource = dt;
+                        comboBoxBarbero.DisplayMember = "NombrePersonal";
+                        comboBoxBarbero.ValueMember = "Id_personal";
+                    }
+                }
 
-				
-				var tipoCorteData = historialCortesDAL.GetAllTipoCorte();
-				foreach (DataRow row in tipoCorteData.Rows)
-				{
-					row["Tipo_corte"] = $"{row["Tipo_corte"]} (${row["Precio"]})";
-				}
-				comboBoxTipoCorte.DataSource = tipoCorteData;
-				comboBoxTipoCorte.DisplayMember = "Tipo_corte";
-				comboBoxTipoCorte.ValueMember = "Id_corte";
+                // Load TipoCorte and format DisplayMember to show both type and price
+                var tipoCorteData = historialCortesDAL.GetAllTipoCorte();
+                foreach (DataRow row in tipoCorteData.Rows)
+                {
+                    row["Tipo_corte"] = $"{row["Tipo_corte"]} (${row["Precio"]})";
+                }
+                comboBoxTipoCorte.DataSource = tipoCorteData;
+                comboBoxTipoCorte.DisplayMember = "Tipo_corte";
+                comboBoxTipoCorte.ValueMember = "Id_corte";
 
-				comboBoxTipoReservacion.DataSource = historialCortesDAL.GetAllTipoReservacion();
-				comboBoxTipoReservacion.DisplayMember = "Tipo_reservacion";
-				comboBoxTipoReservacion.ValueMember = "Id_tipoReservacion";
+                comboBoxTipoReservacion.DataSource = historialCortesDAL.GetAllTipoReservacion();
+                comboBoxTipoReservacion.DisplayMember = "Tipo_reservacion";
+                comboBoxTipoReservacion.ValueMember = "Id_tipoReservacion";
 
-				comboBoxEstado.DataSource = historialCortesDAL.GetAllEstadoReservaciones();
-				comboBoxEstado.DisplayMember = "Estado";
-				comboBoxEstado.ValueMember = "Id_estado";
-			}
-			catch (Exception ex)
-			{
-				MessageBox.Show("Error al cargar lista: " + ex.Message);
-			}
-		}
+                comboBoxEstado.DataSource = historialCortesDAL.GetAllEstadoReservaciones();
+                comboBoxEstado.DisplayMember = "Estado";
+                comboBoxEstado.ValueMember = "Id_estado";
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error loading dropdowns: " + ex.Message);
+            }
+        }
 
-		private void DateTimePicker_ValueChanged(object sender, EventArgs e)
+        private void DateTimePicker_ValueChanged(object sender, EventArgs e)
 		{
 			if (mode == "Add" && comboBoxBarbero.SelectedValue != null)
 			{

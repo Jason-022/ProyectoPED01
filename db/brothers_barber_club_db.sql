@@ -59,8 +59,36 @@ Id_estadoReservacion int FOREIGN KEY REFERENCES estadoReservaciones(Id_estado)
 )
 go
 
+
+
+create table cuentausuario(
+ID_usuario int identity(1,1) not null,
+usuario varchar(100) not null,
+password varchar(200) not null,
+id_personal int FOREIGN KEY REFERENCES personal(Id_personal)
+)
+
+
+
+
 ALTER TABLE tipoCorte
 ADD Precio DECIMAL(10, 2) NOT NULL DEFAULT 0.00;
+
+
+
+
+SELECT * FROM cuentausuario
+SELECT * FROM personal
+SELECT * from estadoReservaciones
+SELECT * FROM tipoCorte
+SELECT * FROM rolPersonal
+
+update personal set Id_rol=1 where Id_personal=1
+
+
+
+update rolPersonal set Tipo_rol='Administrador', Descripcion='Rol Administrador' where Id_rolPersonal=1
+
 
 INSERT INTO estadoReservaciones VALUES('Completado', 'Se realizo el corte')
 INSERT INTO estadoReservaciones VALUES('Cancelado', 'No se realizo el corte')
@@ -69,8 +97,9 @@ INSERT INTO estadoReservaciones VALUES('Pendiente', 'A la espera del cliente')
 
 
 
+
 INSERT INTO tipoReservacion VALUES('Sin cita', 'El cliente no posee una cita agendada')
-INSERT INTO tipoReservacion VALUES('Con sita', 'El cliente agendó una cita con anticipación')
+INSERT INTO tipoReservacion VALUES('Con cita', 'El cliente agendó una cita con anticipación')
 
 SELECT * from estadoReservaciones
 SELECT * FROM historialCortes
@@ -78,3 +107,18 @@ SELECT * FROM personal
 SELECT * FROM rolPersonal
 SELECT * FROM tipoCorte
 SELECT * FROM tipoReservacion
+=======
+INSERT INTO rolPersonal VALUES('Administrador', 'Rol Administracion')
+INSERT INTO rolPersonal VALUES('Barbero', 'Rol Barbero')
+INSERT INTO rolPersonal VALUES('Limpieza', 'Rol Limpieza')
+
+
+INSERT INTO cuentausuario VALUES('alex', 'a665a45920422f9d417e4867efdc4fb8a04a1f3fff1fa07e998e86f7f7a27ae3', 1)
+INSERT INTO cuentausuario VALUES('admin', '123', 1)
+
+
+SELECT * FROM historialCortes h 
+JOIN tipoReservacion r ON h.Id_tipoReservacion = r.Id_tipoReservacion 
+WHERE r.Tipo_reservacion = 'Con cita';
+
+update tipoReservacion set Tipo_reservacion = 'Con cita' where Id_tipoReservacion=2

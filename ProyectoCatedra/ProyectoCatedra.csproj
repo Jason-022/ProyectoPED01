@@ -122,6 +122,12 @@
     <Compile Include="registroPersonal.Designer.cs">
       <DependentUpon>registroPersonal.cs</DependentUpon>
     </Compile>
+    <Compile Include="RegistroUsuarioAdmin.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="RegistroUsuarioAdmin.Designer.cs">
+      <DependentUpon>RegistroUsuarioAdmin.cs</DependentUpon>
+    </Compile>
     <Compile Include="RolPersonalDAL.cs" />
     <Compile Include="SinCitas.cs">
       <SubType>Form</SubType>
@@ -181,6 +187,9 @@
     </Compile>
     <EmbeddedResource Include="registroPersonal.resx">
       <DependentUpon>registroPersonal.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="RegistroUsuarioAdmin.resx">
+      <DependentUpon>RegistroUsuarioAdmin.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="SinCitas.resx">
       <DependentUpon>SinCitas.cs</DependentUpon>

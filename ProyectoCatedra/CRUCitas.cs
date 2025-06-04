@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Data.SqlClient;
 using System.Drawing;
 using System.Linq;
 using System.Text;
@@ -45,11 +46,24 @@ namespace ProyectoCatedra
         {
             try
             {
-                comboBoxBarbero.DataSource = historialCortesDAL.GetAllPersonal();
-                comboBoxBarbero.DisplayMember = "NombrePersonal";
-                comboBoxBarbero.ValueMember = "Id_personal";
+                // Fetch only personnel with Barbero role directly from the database
+                using (SqlConnection conn = ConnectionHelper.GetConnection())
+                {
+                    string query = @"SELECT p.Id_personal, p.NombrePersonal 
+                                    FROM personal p 
+                                    JOIN rolPersonal rp ON p.Id_rol = rp.Id_rolPersonal 
+                                    WHERE rp.Tipo_rol = 'Barbero'";
+                    using (SqlDataAdapter adapter = new SqlDataAdapter(query, conn))
+                    {
+                        DataTable dt = new DataTable();
+                        adapter.Fill(dt);
+                        comboBoxBarbero.DataSource = dt;
+                        comboBoxBarbero.DisplayMember = "NombrePersonal";
+                        comboBoxBarbero.ValueMember = "Id_personal";
+                    }
+                }
 
-               
+                // Load TipoCorte and format DisplayMember to show both type and price
                 var tipoCorteData = historialCortesDAL.GetAllTipoCorte();
                 foreach (DataRow row in tipoCorteData.Rows)
                 {
@@ -69,9 +83,11 @@ namespace ProyectoCatedra
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Error al cargar la lista: " + ex.Message);
+                MessageBox.Show("Error loading dropdowns: " + ex.Message);
             }
         }
+
+
         private void DateTimePicker_ValueChanged(object sender, EventArgs e)
         {
             if (mode == "Add" && comboBoxBarbero.SelectedValue != null)

@@ -72,7 +72,7 @@ namespace ProyectoCatedra
             this.txtNombrePersonal.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtNombrePersonal.Location = new System.Drawing.Point(256, 34);
             this.txtNombrePersonal.Name = "txtNombrePersonal";
-            this.txtNombrePersonal.Size = new System.Drawing.Size(239, 27);
+            this.txtNombrePersonal.Size = new System.Drawing.Size(239, 32);
             this.txtNombrePersonal.TabIndex = 0;
             // 
             // txtDireccionPersonal
@@ -80,7 +80,7 @@ namespace ProyectoCatedra
             this.txtDireccionPersonal.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtDireccionPersonal.Location = new System.Drawing.Point(256, 80);
             this.txtDireccionPersonal.Name = "txtDireccionPersonal";
-            this.txtDireccionPersonal.Size = new System.Drawing.Size(239, 27);
+            this.txtDireccionPersonal.Size = new System.Drawing.Size(239, 32);
             this.txtDireccionPersonal.TabIndex = 1;
             // 
             // dtpFechaNacimiento
@@ -88,18 +88,21 @@ namespace ProyectoCatedra
             this.dtpFechaNacimiento.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.dtpFechaNacimiento.Location = new System.Drawing.Point(256, 126);
             this.dtpFechaNacimiento.Name = "dtpFechaNacimiento";
-            this.dtpFechaNacimiento.Size = new System.Drawing.Size(239, 27);
+            this.dtpFechaNacimiento.Size = new System.Drawing.Size(239, 32);
             this.dtpFechaNacimiento.TabIndex = 2;
             // 
             // cmbRol
             // 
+            this.cmbRol.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbRol.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cmbRol.Items.AddRange(new object[] {
+            "Administrador",
+            "Barbero",
+            "Limpieza"});
             this.cmbRol.Location = new System.Drawing.Point(256, 172);
             this.cmbRol.Name = "cmbRol";
-            this.cmbRol.Size = new System.Drawing.Size(239, 27);
+            this.cmbRol.Size = new System.Drawing.Size(239, 32);
             this.cmbRol.TabIndex = 3;
-            this.cmbRol.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cmbRol.Items.AddRange(new object[] {"Admin", "Limpieza", "Barbero"});
             // 
             // lblNombre
             // 
@@ -108,7 +111,7 @@ namespace ProyectoCatedra
             this.lblNombre.ForeColor = System.Drawing.Color.White;
             this.lblNombre.Location = new System.Drawing.Point(96, 37);
             this.lblNombre.Name = "lblNombre";
-            this.lblNombre.Size = new System.Drawing.Size(63, 19);
+            this.lblNombre.Size = new System.Drawing.Size(78, 24);
             this.lblNombre.TabIndex = 4;
             this.lblNombre.Text = "Nombre";
             // 
@@ -119,7 +122,7 @@ namespace ProyectoCatedra
             this.lblDireccion.ForeColor = System.Drawing.Color.White;
             this.lblDireccion.Location = new System.Drawing.Point(96, 83);
             this.lblDireccion.Name = "lblDireccion";
-            this.lblDireccion.Size = new System.Drawing.Size(71, 19);
+            this.lblDireccion.Size = new System.Drawing.Size(87, 24);
             this.lblDireccion.TabIndex = 5;
             this.lblDireccion.Text = "Dirección";
             // 
@@ -130,7 +133,7 @@ namespace ProyectoCatedra
             this.lblFechaNacimiento.ForeColor = System.Drawing.Color.White;
             this.lblFechaNacimiento.Location = new System.Drawing.Point(96, 132);
             this.lblFechaNacimiento.Name = "lblFechaNacimiento";
-            this.lblFechaNacimiento.Size = new System.Drawing.Size(147, 19);
+            this.lblFechaNacimiento.Size = new System.Drawing.Size(185, 24);
             this.lblFechaNacimiento.TabIndex = 6;
             this.lblFechaNacimiento.Text = "Fecha de Nacimiento";
             // 
@@ -141,13 +144,13 @@ namespace ProyectoCatedra
             this.lblRol.ForeColor = System.Drawing.Color.White;
             this.lblRol.Location = new System.Drawing.Point(96, 175);
             this.lblRol.Name = "lblRol";
-            this.lblRol.Size = new System.Drawing.Size(30, 19);
+            this.lblRol.Size = new System.Drawing.Size(37, 24);
             this.lblRol.TabIndex = 7;
             this.lblRol.Text = "Rol";
             // 
             // CRUPersonal
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 19F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(28)))), ((int)(((byte)(37)))), ((int)(((byte)(38)))));
             this.ClientSize = new System.Drawing.Size(704, 431);
@@ -170,6 +173,7 @@ namespace ProyectoCatedra
             this.Text = "Personal";
             this.ResumeLayout(false);
             this.PerformLayout();
+
         }
 
         #endregion

@@ -40,9 +40,9 @@ namespace ProyectoCatedra
         {
             try
             {
-                dataGridViewCitas.DataSource = historialCortesDAL.GetAllHistorialCortes();
+                dataGridViewCitas.DataSource = historialCortesDAL.GetAllHistorialCortesCitas();
 
-                
+
                 if (dataGridViewCitas.Columns["Id_barbero"] != null)
                     dataGridViewCitas.Columns["Id_barbero"].Visible = false;
                 if (dataGridViewCitas.Columns["Id_tipoCorte"] != null)
@@ -50,12 +50,14 @@ namespace ProyectoCatedra
                 if (dataGridViewCitas.Columns["Id_tipoReservacion"] != null)
                     dataGridViewCitas.Columns["Id_tipoReservacion"].Visible = false;
                 if (dataGridViewCitas.Columns["Id_estadoReservacion"] != null)
+                {
                     dataGridViewCitas.Columns["Id_estadoReservacion"].Visible = false;
+                }
 
-               
+                // Format the Precio column as currency
                 if (dataGridViewCitas.Columns["Precio"] != null)
                 {
-                    dataGridViewCitas.Columns["Precio"].DefaultCellStyle.Format = "C2"; 
+                    dataGridViewCitas.Columns["Precio"].DefaultCellStyle.Format = "C2";
                     dataGridViewCitas.Columns["Precio"].HeaderText = "Precio";
                 }
             }
@@ -138,7 +140,7 @@ namespace ProyectoCatedra
                 else
                 {
                     
-                    DataTable searchResults = historialCortesDAL.SearchHistorialCortesByNombre(busqueda);
+                    DataTable searchResults = historialCortesDAL.SearchHistorialCortesByNombreCitas(busqueda);
                     dataGridViewCitas.DataSource = searchResults;
 
                     

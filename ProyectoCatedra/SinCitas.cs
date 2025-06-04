@@ -23,7 +23,7 @@ namespace ProyectoCatedra
         {
             try
             {
-                dataGridViewSinCitas.DataSource = historialCortesDAL.GetAllHistorialCortes();
+                dataGridViewSinCitas.DataSource = historialCortesDAL.GetAllHistorialCortesSinCita();
 
                 // Hide ID columns
                 if (dataGridViewSinCitas.Columns["Id_barbero"] != null)
@@ -33,18 +33,20 @@ namespace ProyectoCatedra
                 if (dataGridViewSinCitas.Columns["Id_tipoReservacion"] != null)
                     dataGridViewSinCitas.Columns["Id_tipoReservacion"].Visible = false;
                 if (dataGridViewSinCitas.Columns["Id_estadoReservacion"] != null)
+                {
                     dataGridViewSinCitas.Columns["Id_estadoReservacion"].Visible = false;
+                }
 
                 // Format the Precio column as currency
                 if (dataGridViewSinCitas.Columns["Precio"] != null)
                 {
-                    dataGridViewSinCitas.Columns["Precio"].DefaultCellStyle.Format = "C2"; // Currency format
+                    dataGridViewSinCitas.Columns["Precio"].DefaultCellStyle.Format = "C2";
                     dataGridViewSinCitas.Columns["Precio"].HeaderText = "Precio";
                 }
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Error al cargar la información: " + ex.Message);
+                MessageBox.Show("Error loading data: " + ex.Message);
             }
         }
 
@@ -136,7 +138,7 @@ namespace ProyectoCatedra
                 else
                 {
                     // Perform the search
-                    DataTable searchResults = historialCortesDAL.SearchHistorialCortesByNombre(busqueda);
+                    DataTable searchResults = historialCortesDAL.SearchHistorialCortesByNombreSinCita(busqueda);
                     dataGridViewSinCitas.DataSource = searchResults;
 
                     // Reapply formatting after search

@@ -46,5 +46,11 @@ namespace ProyectoCatedra
             rI.Show();
             this.Hide();
         }
+
+        private void btnagregarAdmin_Click(object sender, EventArgs e)
+        {
+            RegistroUsuarioAdmin cradmin = new RegistroUsuarioAdmin();
+            cradmin.Show();
+        }
     }
 }
