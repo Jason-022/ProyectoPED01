@@ -166,7 +166,7 @@ namespace ProyectoCatedra
                 // Chart 2: Total Price of Completed Cuts
                 decimal totalPriceCompleted = historialCortesDAL.GetTotalPriceOfCompletedCuts();
                 decimal placeholderPrice = totalPriceCompleted > 0 ? 10000 - totalPriceCompleted : 1;
-                if (totalPriceCompleted == 0) totalPriceCompleted = 1;
+                if (totalPriceCompleted == 0) totalPriceCompleted = 0;
                 chartTotalPriceCompleted.Series["Price"].Points.Clear();
                 chartTotalPriceCompleted.Series["Price"].Points.AddXY("Completado", totalPriceCompleted);
                 chartTotalPriceCompleted.Series["Price"].Points.AddXY("Espacio Restante", placeholderPrice);
